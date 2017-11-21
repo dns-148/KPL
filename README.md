@@ -9,5 +9,7 @@
 | Destiana Nurliasari        | 5114100148 | PM
 | Achmad Fauzi               | 5113100041 |
 
-## Aplikasi EasyPaint adalah aplikasi paint tool buatan untuk platform android yang memiliki beberapa fitur sebagai penunjang.
+## Aplikasi EasyPaint
+### Deskripsi Aplikasi:
+Easy Paint adalah aplikasi paint tool buatan untuk platform android yang memiliki beberapa fitur sebagai penunjang.
 
