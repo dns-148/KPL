@@ -44,6 +44,7 @@ namespace EasyPaint
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -131,7 +132,8 @@ namespace EasyPaint
             this.toolStripButton4,
             this.toolStripSeparator3,
             this.toolStripButton5,
-            this.toolStripSeparator4});
+            this.toolStripSeparator4,
+            this.toolStripButton6});
             this.toolStrip2.Location = new System.Drawing.Point(24, 24);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(600, 25);
@@ -174,6 +176,16 @@ namespace EasyPaint
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Enabled = false;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton6.Text = "toolStripButton6";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,5 +224,6 @@ namespace EasyPaint
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
     }
 }
