@@ -7,3 +7,12 @@ c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\ob
 c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.exe
 c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.pdb
 c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.MainWindow.resources
+D:\repo\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe.config
+D:\repo\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe
+D:\repo\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.pdb
+D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csprojResolveAssemblyReference.cache
+D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.MainWindow.resources
+D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Properties.Resources.resources
+D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.GenerateResource.Cache
+D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.exe
+D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.pdb
