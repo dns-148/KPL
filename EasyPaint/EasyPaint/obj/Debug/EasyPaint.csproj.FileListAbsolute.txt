@@ -1,0 +1,9 @@
+c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe.config
+c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe
+c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\bin\Debug\EasyPaint.pdb
+c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csprojResolveAssemblyReference.cache
+c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Properties.Resources.resources
+c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.GenerateResource.Cache
+c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.exe
+c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.pdb
+c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.MainWindow.resources
