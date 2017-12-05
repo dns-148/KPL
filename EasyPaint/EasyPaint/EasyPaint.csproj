@@ -45,6 +45,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Canvas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Commands\DrawLineCommand.cs" />
+    <Compile Include="Icon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icon.resx</DependentUpon>
+    </Compile>
+    <Compile Include="InterfaceClass\ICommand.cs" />
+    <Compile Include="Shapes\Line.cs" />
+    <Compile Include="State\BasicState.cs" />
+    <Compile Include="Shapes\Shape.cs" />
+    <Compile Include="InterfaceClass\ITool.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,6 +67,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="State\ModifyState.cs" />
+    <Compile Include="State\NormalState.cs" />
+    <Compile Include="Toolbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tool\LineTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="Icon.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icon.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -77,6 +103,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\rectangle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
