@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 
 namespace EasyPaint.Shapes
 {
-    public class Ellipse : Shape
+    public class Rectangle : Shape
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -13,19 +13,19 @@ namespace EasyPaint.Shapes
 
         private Pen pen;
 
-        public Ellipse()
+        public Rectangle()
         {
             this.pen = new Pen(Color.Black);
             pen.Width = 1.5f;
         }
 
-        public Ellipse(int x, int y) : this()
+        public Rectangle(int x, int y) : this()
         {
             this.X = x;
             this.Y = y;
         }
 
-        public Ellipse(int x, int y, int width, int height) : this(x, y)
+        public Rectangle(int x, int y, int width, int height) : this(x, y)
         {
             this.Width = width;
             this.Height = height;
@@ -44,12 +44,11 @@ namespace EasyPaint.Shapes
         {
             this.pen.Color = Color.Black;
             this.pen.DashStyle = DashStyle.Solid;
-            System.Drawing.Rectangle BoundingRectangle = new System.Drawing.Rectangle(X, Y, Width, Height);
 
             if (this.GetGraphics() != null)
             {
                 this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
-                this.GetGraphics().DrawEllipse(this.pen, BoundingRectangle);
+                this.GetGraphics().DrawRectangle(this.pen,this.X, this.Y, this.Width, this.Height);
             }
         }
 
@@ -57,12 +56,11 @@ namespace EasyPaint.Shapes
         {
             this.pen.Color = Color.Blue;
             this.pen.DashStyle = DashStyle.Solid;
-            System.Drawing.Rectangle BoundingRectangle = new System.Drawing.Rectangle(X, Y, Width, Height);
 
             if (this.GetGraphics() != null)
             {
                 this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
-                this.GetGraphics().DrawEllipse(this.pen, BoundingRectangle);
+                this.GetGraphics().DrawRectangle(this.pen, this.X, this.Y, this.Width, this.Height);
             }
         }
 
