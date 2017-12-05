@@ -71,17 +71,17 @@ namespace EasyPaint.Tool
             }
         }
 
-        public void ToolMouseUp(object sender, MouseEventArgs e)
+        public void ToolMouseUp(object Sender, MouseEventArgs Event)
         {
             if (RectangleShape != null)
             {
-                if (e.Button == MouseButtons.Left)
+                if (Event.Button == MouseButtons.Left)
                 {
                     Command = new DrawEllipseCommand(ActiveCanvas, XPoint, YPoint, this.RectangleShape.Width, this.RectangleShape.Height);
                     ActiveCanvas.RemoveDrawnShape(this.RectangleShape);
                     Command.Execute();
                 }
-                else if (e.Button == MouseButtons.Right)
+                else if (Event.Button == MouseButtons.Right)
                 {
                     Command.UnExecute();
                     Command = null;
@@ -99,17 +99,17 @@ namespace EasyPaint.Tool
             Command = null;
         }
 
-        public void ToolMouseDoubleClick(object sender, MouseEventArgs e)
+        public void ToolMouseDoubleClick(object Sender, MouseEventArgs Event)
         {
 
         }
 
-        public void ToolKeyUp(object sender, KeyEventArgs e)
+        public void ToolKeyUp(object Sender, KeyEventArgs Event)
         {
 
         }
 
-        public void ToolKeyDown(object sender, KeyEventArgs e)
+        public void ToolKeyDown(object Sender, KeyEventArgs Event)
         {
 
         }
