@@ -1,6 +1,4 @@
 ﻿using System;
-using EasyPaint.InterfaceClass;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
@@ -20,7 +18,6 @@ namespace EasyPaint.Shapes
         {
             this.pen = new Pen(Color.Black);
             pen.Width = 1.5f;
-
         }
 
         public Line(Point InputPoint) : this()

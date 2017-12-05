@@ -1,7 +1,6 @@
 ﻿using EasyPaint.Shapes;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Commands;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace EasyPaint.Tool
@@ -11,8 +10,8 @@ namespace EasyPaint.Tool
         private Canvas ActiveCanvas;
         private ICommand Command;
         private Line LineShape;
-        private int xStartpoint;
-        private int yStartpoint;
+        private int XPoint;
+        private int YPoint;
 
         public Cursor Cursor
         {
@@ -48,8 +47,8 @@ namespace EasyPaint.Tool
             if (Event.Button == MouseButtons.Left)
             {
                 //Debug.WriteLine("Event Line Tool");
-                xStartpoint = Event.X;
-                yStartpoint = Event.Y;
+                XPoint = Event.X;
+                YPoint = Event.Y;
                 LineShape = new Line(new System.Drawing.Point(Event.X, Event.Y));
                 LineShape.Endpoint = new System.Drawing.Point(Event.X, Event.Y);
                 ActiveCanvas.AddDrawnShape(LineShape);
@@ -74,7 +73,7 @@ namespace EasyPaint.Tool
                 if (Event.Button == MouseButtons.Left)
                 {
                     ActiveCanvas.RemoveDrawnShape(this.LineShape);
-                    Command = new DrawLineCommand(ActiveCanvas, xStartpoint, yStartpoint, Event.X, Event.Y);
+                    Command = new DrawLineCommand(ActiveCanvas, XPoint, YPoint, Event.X, Event.Y);
                     Command.Execute();
                 }
             }
