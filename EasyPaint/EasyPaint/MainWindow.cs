@@ -8,9 +8,8 @@ namespace EasyPaint
 {
     public partial class MainWindow : Form
     {
-        private ITool ActiveTool;
+        //private ITool ActiveTool;
         private Canvas DrawingCanvas;
-        private Toolbox ToolBox;
         private System.Windows.Forms.TabControl tabControl;
 
         public MainWindow()
@@ -22,7 +21,32 @@ namespace EasyPaint
 
         private void SetToolbox()
         {
-          
+            System.Windows.Forms.ToolStrip ToolBox = new System.Windows.Forms.ToolStrip();
+            LineTool LineToolStrip = new LineTool();
+            LineToolStrip.TargetCanvas = DrawingCanvas;
+            EllipseTool EllipseToolStrip = new EllipseTool();
+            EllipseToolStrip.TargetCanvas = DrawingCanvas;
+            RectangleTool RectangleToolStrip = new RectangleTool();
+            RectangleToolStrip.TargetCanvas = DrawingCanvas;
+            ToolStripSeparator ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            ToolStripSeparator1.Size = new System.Drawing.Size(21, 6);
+            ToolStripSeparator ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            ToolStripSeparator2.Size = new System.Drawing.Size(21, 6);
+
+            ToolBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            LineToolStrip,
+            ToolStripSeparator1,
+            RectangleToolStrip,
+            ToolStripSeparator2,
+            EllipseToolStrip});
+            ToolBox.Dock = System.Windows.Forms.DockStyle.Left;
+            ToolBox.Location = new System.Drawing.Point(0, 24);
+            ToolBox.Name = "ToolBox";
+            ToolBox.Size = new System.Drawing.Size(24, 418);
+            ToolBox.TabIndex = 0;
+            ToolBox.Text = "Toolbox";
+
+            this.Controls.Add(ToolBox);
         }
 
         private void SetCanvas()

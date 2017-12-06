@@ -1,31 +1,9 @@
-c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe.config
-c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe
-c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\bin\Debug\EasyPaint.pdb
-c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csprojResolveAssemblyReference.cache
-c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Properties.Resources.resources
-c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.GenerateResource.Cache
-c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.exe
-c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.pdb
-c:\users\kartuhitam\documents\visual studio 2017\Projects\EasyPaint\EasyPaint\obj\Debug\EasyPaint.MainWindow.resources
 D:\repo\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe.config
 D:\repo\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe
 D:\repo\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.pdb
-D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csprojResolveAssemblyReference.cache
+D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Icon.resources
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.MainWindow.resources
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Properties.Resources.resources
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.GenerateResource.Cache
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.exe
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.pdb
-<<<<<<< HEAD
-D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Icon.resources
-=======
-F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe.config
-F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.exe
-F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.pdb
-F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe
-F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.pdb
-F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csprojResolveAssemblyReference.cache
-F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.MainWindow.resources
-F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Properties.Resources.resources
-F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.GenerateResource.Cache
->>>>>>> 050d3cdcad3b9de9365d992494229d6970b5b6c0
