@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using EasyPaint.InterfaceClass;
@@ -9,25 +10,37 @@ namespace EasyPaint
     public partial class MainWindow : Form
     {
         //private ITool ActiveTool;
+        private List<ToolStripButton> AllTool;
         private Canvas DrawingCanvas;
         private System.Windows.Forms.TabControl tabControl;
 
         public MainWindow()
         {
             InitializeComponent();
-            SetToolbox();
             SetCanvas();
+            SetToolbox();
         }
 
         private void SetToolbox()
         {
+            AllTool = new List<ToolStripButton>();
             System.Windows.Forms.ToolStrip ToolBox = new System.Windows.Forms.ToolStrip();
+
             LineTool LineToolStrip = new LineTool();
             LineToolStrip.TargetCanvas = DrawingCanvas;
+            LineToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            AllTool.Add(LineToolStrip);
+
             EllipseTool EllipseToolStrip = new EllipseTool();
             EllipseToolStrip.TargetCanvas = DrawingCanvas;
+            EllipseToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            AllTool.Add(EllipseToolStrip);
+
             RectangleTool RectangleToolStrip = new RectangleTool();
             RectangleToolStrip.TargetCanvas = DrawingCanvas;
+            RectangleToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            AllTool.Add(RectangleToolStrip);
+
             ToolStripSeparator ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ToolStripSeparator1.Size = new System.Drawing.Size(21, 6);
             ToolStripSeparator ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -67,6 +80,13 @@ namespace EasyPaint
             tabPage.Controls.Add((Control)DrawingCanvas);
             this.Controls.Add(this.tabControl);
 
+        }
+
+        public void Toolbox_ItemClicked(object Sender, EventArgs Event)
+        {
+            ITool SelectedTool = (ITool)Sender;
+            DrawingCanvas.SetActiveTool(SelectedTool);
+            DrawingCanvas.DeselectAllShapes();
         }
     }
 }

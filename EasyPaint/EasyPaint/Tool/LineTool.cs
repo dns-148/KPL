@@ -49,9 +49,9 @@ namespace EasyPaint.Tool
                 //Debug.WriteLine("Event Line Tool");
                 XPoint = Event.X;
                 YPoint = Event.Y;
-                LineShape = new Line(new System.Drawing.Point(Event.X, Event.Y));
-                LineShape.Endpoint = new System.Drawing.Point(Event.X, Event.Y);
-                ActiveCanvas.AddDrawnShape(LineShape);
+                this.LineShape = new Line(new System.Drawing.Point(Event.X, Event.Y));
+                this.LineShape.Endpoint = new System.Drawing.Point(Event.X, Event.Y);
+                ActiveCanvas.AddDrawnShape(this.LineShape);
             }
         }
 

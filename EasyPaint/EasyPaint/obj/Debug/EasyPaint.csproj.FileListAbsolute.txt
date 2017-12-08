@@ -7,3 +7,4 @@ D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Properties.Resources.resourc
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.GenerateResource.Cache
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.exe
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.pdb
+D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csprojResolveAssemblyReference.cache
