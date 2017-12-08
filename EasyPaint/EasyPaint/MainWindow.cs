@@ -85,6 +85,13 @@ namespace EasyPaint
         public void Toolbox_ItemClicked(object Sender, EventArgs Event)
         {
             ITool SelectedTool = (ITool)Sender;
+            foreach (ToolStripButton Tool in AllTool)
+            {
+                if(Tool != SelectedTool)
+                {
+                    Tool.Checked = false;
+                }
+            }
             DrawingCanvas.SetActiveTool(SelectedTool);
             DrawingCanvas.DeselectAllShapes();
         }
