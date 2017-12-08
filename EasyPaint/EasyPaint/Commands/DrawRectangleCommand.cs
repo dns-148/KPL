@@ -3,7 +3,7 @@ using EasyPaint.Shapes;
 
 namespace EasyPaint.Commands
 {
-    public class DrawRectangleCommand
+    public class DrawRectangleCommand : ICommand
     {
         private Canvas ActiveCanvas;
         private Rectangle RectangleShape;

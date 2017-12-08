@@ -77,7 +77,7 @@ namespace EasyPaint.Tool
             {
                 if (Event.Button == MouseButtons.Left)
                 {
-                    Command = new DrawEllipseCommand(ActiveCanvas, XPoint, YPoint, this.RectangleShape.Width, this.RectangleShape.Height);
+                    Command = new DrawRectangleCommand(ActiveCanvas, XPoint, YPoint, this.RectangleShape.Width, this.RectangleShape.Height);
                     ActiveCanvas.RemoveDrawnShape(this.RectangleShape);
                     Command.Execute();
                 }
