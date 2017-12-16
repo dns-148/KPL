@@ -2,6 +2,7 @@
 using EasyPaint.InterfaceClass;
 using EasyPaint.Commands;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace EasyPaint.Tool
 {
@@ -63,6 +64,18 @@ namespace EasyPaint.Tool
                     int Width = Event.X - this.EllipseShape.X;
                     int Height = Event.Y - this.EllipseShape.Y;
 
+                    if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
+                    {
+                        if (Width > Height)
+                        {
+                            Width = Height;
+                        }
+                        else
+                        {
+                           Height = Width;
+                        }
+                    }
+
                     if (Width > 0 && Height > 0)
                     {
                         this.EllipseShape.Width = Width;
@@ -85,7 +98,7 @@ namespace EasyPaint.Tool
                 else if (Event.Button == MouseButtons.Right)
                 {
                     Command.UnExecute();
-                    Command = null;
+                    SetCommandNull();
                 }
             }
         }
@@ -107,12 +120,12 @@ namespace EasyPaint.Tool
 
         public void ToolKeyUp(object Sender, KeyEventArgs Event)
         {
-
+          
         }
 
         public void ToolKeyDown(object Sender, KeyEventArgs Event)
         {
-
+            
         }
     }
 }
