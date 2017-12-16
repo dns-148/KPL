@@ -1,17 +1,22 @@
-﻿using EasyPaint.Shapes;
-using EasyPaint.InterfaceClass;
+﻿using EasyPaint.InterfaceClass;
 using EasyPaint.Commands;
+using System.Collections.Generic;
+using System.Diagnostics;
+using EasyPaint.Shapes;
 using System.Windows.Forms;
 
 namespace EasyPaint.Tool
 {
-    public class EllipseTool : ToolStripButton, ITool
+    public class SelectionTool : ToolStripButton, ITool
     {
         private Canvas ActiveCanvas;
         private ICommand Command;
-        private Ellipse EllipseShape;
         private int XPoint;
         private int YPoint;
+        private int SelectionWidth;
+        private int SelectionHeight;
+        private Selection SelectionArea;
+        private List<Shape> SelectedShapes;
 
         public Cursor Cursor
         {
@@ -34,11 +39,11 @@ namespace EasyPaint.Tool
             }
         }
 
-        public EllipseTool()
+        public SelectionTool()
         {
-            this.Name = "Ellipse Tool";
-            this.ToolTipText = "Ellipse Tool";
-            this.Image = Icon.circle;
+            this.Name = "Selection Tool";
+            this.ToolTipText = "Selection Tool";
+            this.Image = Icon.selectionTool;
             this.CheckOnClick = true;
         }
 
@@ -48,9 +53,9 @@ namespace EasyPaint.Tool
             {
                 XPoint = Event.X;
                 YPoint = Event.Y;
-                this.EllipseShape = new Ellipse(Event.X, Event.Y);
-                this.ActiveCanvas.AddDrawnShape(this.EllipseShape);
-                EllipseShape.Select();
+
+                this.SelectionArea = new Selection(Event.X, Event.Y);
+                this.ActiveCanvas.AddDrawnShape(this.SelectionArea);
             }
         }
 
@@ -58,27 +63,15 @@ namespace EasyPaint.Tool
         {
             if (Event.Button == MouseButtons.Left)
             {
-                if (this.EllipseShape != null)
+                if (this.SelectionArea != null)
                 {
-                    int Width = Event.X - this.EllipseShape.X;
-                    int Height = Event.Y - this.EllipseShape.Y;
-
-                    if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
-                    {
-                        if (Width > Height)
-                        {
-                            Width = Height;
-                        }
-                        else
-                        {
-                           Height = Width;
-                        }
-                    }
+                    int Width = Event.X - this.SelectionArea.X;
+                    int Height = Event.Y - this.SelectionArea.Y;
 
                     if (Width > 0 && Height > 0)
                     {
-                        this.EllipseShape.Width = Width;
-                        this.EllipseShape.Height = Height;
+                        this.SelectionArea.Width = Width;
+                        this.SelectionArea.Height = Height;
                     }
                 }
             }
@@ -86,18 +79,16 @@ namespace EasyPaint.Tool
 
         public void ToolMouseUp(object Sender, MouseEventArgs Event)
         {
-            if (EllipseShape != null)
+            if (Event.Button == MouseButtons.Left)
             {
-                if (Event.Button == MouseButtons.Left)
+                if (SelectionArea != null)
                 {
-                    Command = new DrawEllipseCommand(ActiveCanvas, XPoint, YPoint, this.EllipseShape.Width, this.EllipseShape.Height);
-                    ActiveCanvas.RemoveDrawnShape(this.EllipseShape);
-                    Command.Execute();
-                }
-                else if (Event.Button == MouseButtons.Right)
-                {
-                    Command.UnExecute();
-                    SetCommandNull();
+                    ActiveCanvas.DeselectAllShapes();
+                    SelectedShapes = null;
+                    SelectionWidth = this.SelectionArea.Width;
+                    SelectionHeight = this.SelectionArea.Height;
+                    ActiveCanvas.RemoveDrawnShape(this.SelectionArea);
+                    SelectedShapes = ActiveCanvas.SelectShapeAt(XPoint, YPoint, SelectionWidth, SelectionHeight);
                 }
             }
         }
@@ -119,12 +110,12 @@ namespace EasyPaint.Tool
 
         public void ToolKeyUp(object Sender, KeyEventArgs Event)
         {
-          
+
         }
 
         public void ToolKeyDown(object Sender, KeyEventArgs Event)
         {
-            
+
         }
     }
 }

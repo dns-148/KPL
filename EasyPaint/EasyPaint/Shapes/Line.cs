@@ -13,18 +13,16 @@ namespace EasyPaint.Shapes
 
         private Pen DrawingPen;
 
-        private Color ShapeColor;
-
         public Line()
         {
             this.DrawingPen = new Pen(Color.Black);
-            ShapeColor = Color.Black;
+            OutlineColor = Color.Black;
             DrawingPen.Width = 1.5f;
         }
 
         public void SetColor(Color SelectedColor)
         {
-            ShapeColor = SelectedColor;
+            OutlineColor = SelectedColor;
         }
 
         public Line(Point InputPoint) : this()
@@ -39,7 +37,7 @@ namespace EasyPaint.Shapes
 
         public override void RenderOnNormal()
         {
-            DrawingPen.Color = ShapeColor;
+            DrawingPen.Color = OutlineColor;
             DrawingPen.Width = 1.5f;
             DrawingPen.DashStyle = DashStyle.Solid;
 
@@ -61,6 +59,18 @@ namespace EasyPaint.Shapes
                 this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
                 this.GetGraphics().DrawLine(DrawingPen, this.Startpoint, this.Endpoint);
             }
+        }
+
+        public override bool Inside(int xOuter, int yOuter, int WidthOuter, int HeightOuter)
+        {
+            if(xOuter <= Startpoint.X && xOuter + WidthOuter >= Startpoint.X && yOuter <= Startpoint.Y && yOuter + HeightOuter >= Startpoint.Y)
+            {
+                if (xOuter <= Endpoint.X && xOuter + WidthOuter >= Endpoint.X && yOuter <= Endpoint.Y && yOuter + HeightOuter >= Endpoint.Y)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public override bool Intersect(int xTest, int yTest)
@@ -86,16 +96,6 @@ namespace EasyPaint.Shapes
         {
             this.Startpoint = new Point(this.Startpoint.X + xAmount, this.Startpoint.Y + yAmount);
             this.Endpoint = new Point(this.Endpoint.X + xAmount, this.Endpoint.Y + yAmount);
-        }
-
-        public override bool Add(Shape SelectedShape)
-        {
-            return false;
-        }
-
-        public override bool Remove(Shape SelectedShape)
-        {
-            return false;
         }
     }
 }

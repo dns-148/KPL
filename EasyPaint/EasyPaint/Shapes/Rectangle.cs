@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace EasyPaint.Shapes
@@ -11,12 +10,13 @@ namespace EasyPaint.Shapes
         public int Width { get; set; }
         public int Height { get; set; }
 
-        private Pen pen;
-
+        private Pen DrawingPen;
+       
         public Rectangle()
         {
-            this.pen = new Pen(Color.Black);
-            pen.Width = 1.5f;
+            this.DrawingPen = new Pen(Color.Black);
+            OutlineColor = Color.Black;
+            DrawingPen.Width = 1.5f;
         }
 
         public Rectangle(int x, int y) : this()
@@ -31,6 +31,15 @@ namespace EasyPaint.Shapes
             this.Height = height;
         }
 
+        public override bool Inside(int xOuter, int yOuter, int WidthOuter, int HeightOuter)
+        {
+            if (xOuter <= X && yOuter <= Y && WidthOuter + xOuter >= Width + X && HeightOuter + yOuter >= Height + Y)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public override bool Intersect(int xTest, int yTest)
         {
             if ((xTest >= X && xTest <= X + Width) && (yTest >= Y && yTest <= Y + Height))
@@ -42,25 +51,25 @@ namespace EasyPaint.Shapes
 
         public override void RenderOnNormal()
         {
-            this.pen.Color = Color.Black;
-            this.pen.DashStyle = DashStyle.Solid;
+            DrawingPen.Color = OutlineColor;
+            DrawingPen.DashStyle = DashStyle.Solid;
 
-            if (this.GetGraphics() != null)
+            if (GetGraphics() != null)
             {
-                this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
-                this.GetGraphics().DrawRectangle(this.pen,this.X, this.Y, this.Width, this.Height);
+                GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
+                GetGraphics().DrawRectangle(DrawingPen, X, Y, Width, Height);
             }
         }
 
         public override void RenderOnModify()
         {
-            this.pen.Color = Color.Blue;
-            this.pen.DashStyle = DashStyle.DashDotDot;
+            DrawingPen.Color = Color.Blue;
+            DrawingPen.DashStyle = DashStyle.DashDotDot;
 
-            if (this.GetGraphics() != null)
+            if (GetGraphics() != null)
             {
-                this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
-                this.GetGraphics().DrawRectangle(this.pen, this.X, this.Y, this.Width, this.Height);
+                GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
+                GetGraphics().DrawRectangle(DrawingPen, X, Y, Width, Height);
             }
         }
 
@@ -68,16 +77,6 @@ namespace EasyPaint.Shapes
         {
             this.X += xAmount;
             this.Y += yAmount;
-        }
-
-        public override bool Add(Shape SelectedShape)
-        {
-            return false;
-        }
-
-        public override bool Remove(Shape SelectedShape)
-        {
-            return false;
         }
     }
 }

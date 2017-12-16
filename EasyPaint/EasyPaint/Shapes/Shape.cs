@@ -9,6 +9,8 @@ namespace EasyPaint.Shapes
     public abstract class Shape
     {
         public Guid ID { get; set; }
+        public Color OutlineColor { get; set; }
+        public Color FillColor { get; set; }
 
         public BasicState State
         {
@@ -27,10 +29,8 @@ namespace EasyPaint.Shapes
             this.ChangeState(NormalState.GetInstance());
         }
 
-        public abstract bool Add(Shape InputShape);
-        public abstract bool Remove(Shape InputShape);
-
         public abstract bool Intersect(int xTest, int yTest);
+        public abstract bool Inside(int xOuter, int yOuter, int WidthOuter, int HeightOuter);
         public abstract void Translate(int x, int y, int xAmount, int yAmount);
 
         public abstract void RenderOnModify();

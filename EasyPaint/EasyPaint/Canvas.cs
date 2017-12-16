@@ -133,15 +133,19 @@ namespace EasyPaint
             return null;
         }
 
-        public Shape SelectShapeAt(int x, int y)
+        public List<Shape> SelectShapeAt(int x, int y, int width, int height)
         {
-            Shape SelectedShape = GetShapeAt(x, y);
-            if (SelectedShape != null)
+            List<Shape> SelectedShapes = new List<Shape>();
+            foreach (Shape SelectedShape in ShapesDrawn)
             {
-                SelectedShape.Select();
+                if (SelectedShape.Inside(x, y, width, height))
+                {
+                    SelectedShape.Select();
+                    SelectedShapes.Add(SelectedShape);
+                }
             }
 
-            return SelectedShape;
+            return SelectedShapes;
         }
 
         public void DeselectAllShapes()

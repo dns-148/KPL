@@ -51,15 +51,20 @@
     <Compile Include="Commands\DrawEllipseCommand.cs" />
     <Compile Include="Commands\DrawLineCommand.cs" />
     <Compile Include="Commands\DrawRectangleCommand.cs" />
+    <Compile Include="Commands\GroupShapeCommand.cs" />
+    <Compile Include="Commands\MoveShapeCommand.cs" />
+    <Compile Include="Commands\SelectShapeCommand.cs" />
     <Compile Include="Icon.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Icon.resx</DependentUpon>
     </Compile>
     <Compile Include="InterfaceClass\ICommand.cs" />
+    <Compile Include="Shapes\CompositeShape.cs" />
     <Compile Include="Shapes\Ellipse.cs" />
     <Compile Include="Shapes\Line.cs" />
     <Compile Include="Shapes\Rectangle.cs" />
+    <Compile Include="Shapes\Selection.cs" />
     <Compile Include="State\BasicState.cs" />
     <Compile Include="Shapes\Shape.cs" />
     <Compile Include="InterfaceClass\ITool.cs" />
@@ -83,6 +88,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\RectangleTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tool\SelectionTool.cs">
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Icon.resx">
@@ -122,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\selectionTool.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

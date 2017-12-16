@@ -39,6 +39,11 @@ namespace EasyPaint
             RectangleTool RectangleToolStrip = new RectangleTool();
             RectangleToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
             ToolBox.AddTool(RectangleToolStrip);
+            ToolBox.AddSeparator();
+
+            SelectionTool SelectionToolStrip = new SelectionTool();
+            SelectionToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            ToolBox.AddTool(SelectionToolStrip);
 
             this.Controls.Add(ToolBox);
         }
