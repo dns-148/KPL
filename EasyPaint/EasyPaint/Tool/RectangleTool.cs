@@ -63,6 +63,18 @@ namespace EasyPaint.Tool
                     int Width = Event.X - this.RectangleShape.X;
                     int Height = Event.Y - this.RectangleShape.Y;
 
+                    if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
+                    {
+                        if (Width > Height)
+                        {
+                            Width = Height;
+                        }
+                        else
+                        {
+                            Height = Width;
+                        }
+                    }
+
                     if (Width > 0 && Height > 0)
                     {
                         this.RectangleShape.Width = Width;
