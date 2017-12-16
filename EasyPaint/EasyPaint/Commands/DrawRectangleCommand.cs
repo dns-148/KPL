@@ -26,7 +26,6 @@ namespace EasyPaint.Commands
         {
             RectangleShape = new Rectangle(X, Y, Width, Height);
             this.ActiveCanvas.AddDrawnShape(this.RectangleShape);
-            RectangleShape.Select();
         }
 
         public void UnExecute()

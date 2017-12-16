@@ -26,7 +26,6 @@ namespace EasyPaint.Commands
         {
             EllipseShape = new Ellipse(X, Y, Width, Height);
             this.ActiveCanvas.AddDrawnShape(this.EllipseShape);
-            EllipseShape.Select();
         }
 
         public void UnExecute()

@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-
 namespace EasyPaint.Shapes
 {
     public class Line : Shape
@@ -12,12 +11,20 @@ namespace EasyPaint.Shapes
         public Point Startpoint { get; set; }
         public Point Endpoint { get; set; }
 
-        private Pen pen;
+        private Pen DrawingPen;
+
+        private Color ShapeColor;
 
         public Line()
         {
-            this.pen = new Pen(Color.Black);
-            pen.Width = 1.5f;
+            this.DrawingPen = new Pen(Color.Black);
+            ShapeColor = Color.Black;
+            DrawingPen.Width = 1.5f;
+        }
+
+        public void SetColor(Color SelectedColor)
+        {
+            ShapeColor = SelectedColor;
         }
 
         public Line(Point InputPoint) : this()
@@ -32,27 +39,27 @@ namespace EasyPaint.Shapes
 
         public override void RenderOnNormal()
         {
-            pen.Color = Color.Black;
-            pen.Width = 1.5f;
-            pen.DashStyle = DashStyle.Solid;
+            DrawingPen.Color = ShapeColor;
+            DrawingPen.Width = 1.5f;
+            DrawingPen.DashStyle = DashStyle.Solid;
 
             if (this.GetGraphics() != null)
             {
                 this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
-                this.GetGraphics().DrawLine(pen, this.Startpoint, this.Endpoint);
+                this.GetGraphics().DrawLine(DrawingPen, this.Startpoint, this.Endpoint);
             }
         }
 
         public override void RenderOnModify()
         {
-            pen.Color = Color.Blue;
-            pen.Width = 1.5f;
-            pen.DashStyle = DashStyle.Solid;
+            DrawingPen.Color = Color.Blue;
+            DrawingPen.Width = 1.5f;
+            DrawingPen.DashStyle = DashStyle.DashDotDot;
 
             if (this.GetGraphics() != null)
             {
                 this.GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
-                this.GetGraphics().DrawLine(pen, this.Startpoint, this.Endpoint);
+                this.GetGraphics().DrawLine(DrawingPen, this.Startpoint, this.Endpoint);
             }
         }
 

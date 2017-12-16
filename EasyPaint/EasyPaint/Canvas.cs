@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using EasyPaint.InterfaceClass;
@@ -148,6 +146,7 @@ namespace EasyPaint
 
         public void DeselectAllShapes()
         {
+
             foreach (Shape SelectedShape in ShapesDrawn)
             {
                 SelectedShape.Deselect();

@@ -56,7 +56,7 @@ namespace EasyPaint.Shapes
         public override void RenderOnModify()
         {
             this.pen.Color = Color.Blue;
-            this.pen.DashStyle = DashStyle.Solid;
+            this.pen.DashStyle = DashStyle.DashDotDot;
             System.Drawing.Rectangle BoundingRectangle = new System.Drawing.Rectangle(X, Y, Width, Height);
 
             if (this.GetGraphics() != null)

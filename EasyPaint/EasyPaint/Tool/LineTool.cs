@@ -44,14 +44,17 @@ namespace EasyPaint.Tool
 
         public void ToolMouseDown(object Sender, MouseEventArgs Event)
         {
+            ActiveCanvas.DeselectAllShapes();
             if (Event.Button == MouseButtons.Left)
             {
-                //Debug.WriteLine("Event Line Tool");
                 XPoint = Event.X;
                 YPoint = Event.Y;
-                this.LineShape = new Line(new System.Drawing.Point(Event.X, Event.Y));
-                this.LineShape.Endpoint = new System.Drawing.Point(Event.X, Event.Y);
+                this.LineShape = new Line(new System.Drawing.Point(Event.X, Event.Y))
+                {
+                    Endpoint = new System.Drawing.Point(Event.X, Event.Y)
+                };
                 ActiveCanvas.AddDrawnShape(this.LineShape);
+                LineShape.Select();
             }
         }
 

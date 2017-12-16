@@ -50,6 +50,7 @@ namespace EasyPaint.Tool
                 YPoint = Event.Y;
                 this.EllipseShape = new Ellipse(Event.X, Event.Y);
                 this.ActiveCanvas.AddDrawnShape(this.EllipseShape);
+                EllipseShape.Select();
             }
         }
 

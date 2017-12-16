@@ -27,7 +27,6 @@ namespace EasyPaint.Commands
             LineShape = new Line(new System.Drawing.Point(xStartpoint, yStartpoint));
             LineShape.Endpoint = new System.Drawing.Point(xEndpoint, yEndpoint);
             ActiveCanvas.AddDrawnShape(LineShape);
-            LineShape.Select();
         }
 
         public void UnExecute()

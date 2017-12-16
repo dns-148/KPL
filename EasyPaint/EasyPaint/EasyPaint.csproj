@@ -73,6 +73,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="State\ModifyState.cs" />
     <Compile Include="State\NormalState.cs" />
+    <Compile Include="Toolbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Tool\EllipseTool.cs">
       <SubType>Component</SubType>
     </Compile>
