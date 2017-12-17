@@ -76,6 +76,7 @@ namespace EasyPaint.Tool
                 if (Event.Button == MouseButtons.Left)
                 {
                     ActiveCanvas.RemoveDrawnShape(this.LineShape);
+                    LineShape = null;
                     Command = new DrawLineCommand(ActiveCanvas, XPoint, YPoint, Event.X, Event.Y);
                     Command.Execute();
                 }

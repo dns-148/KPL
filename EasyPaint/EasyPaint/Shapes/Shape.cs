@@ -9,8 +9,6 @@ namespace EasyPaint.Shapes
     public abstract class Shape
     {
         public Guid ID { get; set; }
-        public Color OutlineColor { get; set; }
-        public Color FillColor { get; set; }
 
         public BasicState State
         {
@@ -21,7 +19,7 @@ namespace EasyPaint.Shapes
         }
 
         private BasicState ShapeState;
-        private Graphics ShapeGraphics;
+        protected Graphics ShapeGraphics;
 
         public Shape()
         {
@@ -65,5 +63,8 @@ namespace EasyPaint.Shapes
         {
             this.ShapeState.Deselect(this);
         }
+
+        protected Color OutlineColor;
+        protected Color FillColor;
     }
 }

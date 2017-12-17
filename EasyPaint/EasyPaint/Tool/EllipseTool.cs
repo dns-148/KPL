@@ -94,11 +94,6 @@ namespace EasyPaint.Tool
                     ActiveCanvas.RemoveDrawnShape(this.EllipseShape);
                     Command.Execute();
                 }
-                else if (Event.Button == MouseButtons.Right)
-                {
-                    Command.UnExecute();
-                    SetCommandNull();
-                }
             }
         }
 

@@ -10,9 +10,9 @@ namespace EasyPaint
         public Toolbox()
         {
             this.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Location = new System.Drawing.Point(0, 24);
+            this.Location = new System.Drawing.Point(0, 50);
             this.Name = "ToolBox";
-            this.Size = new System.Drawing.Size(24, 418);
+            this.Size = new System.Drawing.Size(24, 420);
             this.TabIndex = 0;
             this.Text = "Toolbox";
         }

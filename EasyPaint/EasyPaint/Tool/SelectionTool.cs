@@ -13,10 +13,11 @@ namespace EasyPaint.Tool
         private ICommand Command;
         private int XPoint;
         private int YPoint;
-        private int SelectionWidth;
-        private int SelectionHeight;
+        private int xAmount;
+        private int yAmount;
         private Selection SelectionArea;
         private List<Shape> SelectedShapes;
+        private MovementLine MovementTrace;
 
         public Cursor Cursor
         {
@@ -49,13 +50,50 @@ namespace EasyPaint.Tool
 
         public void ToolMouseDown(object Sender, MouseEventArgs Event)
         {
+            XPoint = Event.X;
+            YPoint = Event.Y;
+
             if (Event.Button == MouseButtons.Left)
             {
-                XPoint = Event.X;
-                YPoint = Event.Y;
-
                 this.SelectionArea = new Selection(Event.X, Event.Y);
                 this.ActiveCanvas.AddDrawnShape(this.SelectionArea);
+            }
+            else if (Event.Button == MouseButtons.Right)
+            {
+                bool IntersectShape = false;
+                if (SelectedShapes != null)
+                {
+                    foreach (Shape SelectedShape in SelectedShapes)
+                    {
+                        if (SelectedShape.Intersect(Event.X, Event.Y))
+                        {
+                            IntersectShape = true;
+                            break;
+                        }
+                    }
+                }
+
+                if(!IntersectShape)
+                {
+                    SelectedShapes = new List<Shape>();
+                    ActiveCanvas.DeselectAllShapes();
+                    Shape SelectedShape = ActiveCanvas.GetShapeAt(Event.X, Event.Y);
+                    if (SelectedShape != null)
+                    {
+                        SelectedShape.Select();
+                        SelectedShapes.Add(SelectedShape);
+                        IntersectShape = true;
+                    }
+                }
+
+                if (IntersectShape)
+                {
+                    this.MovementTrace = new MovementLine(new System.Drawing.Point(Event.X, Event.Y))
+                    {
+                        Endpoint = new System.Drawing.Point(Event.X, Event.Y)
+                    };
+                    ActiveCanvas.AddDrawnShape(this.MovementTrace);
+                }
             }
         }
 
@@ -75,6 +113,15 @@ namespace EasyPaint.Tool
                     }
                 }
             }
+            else if (Event.Button == MouseButtons.Right)
+            {
+                this.xAmount = Event.X - XPoint;
+                this.yAmount = Event.Y - YPoint;
+                if (this.MovementTrace != null)
+                {
+                    MovementTrace.Endpoint = new System.Drawing.Point(Event.X, Event.Y);
+                }
+            }
         }
 
         public void ToolMouseUp(object Sender, MouseEventArgs Event)
@@ -84,12 +131,17 @@ namespace EasyPaint.Tool
                 if (SelectionArea != null)
                 {
                     ActiveCanvas.DeselectAllShapes();
-                    SelectedShapes = null;
-                    SelectionWidth = this.SelectionArea.Width;
-                    SelectionHeight = this.SelectionArea.Height;
-                    ActiveCanvas.RemoveDrawnShape(this.SelectionArea);
-                    SelectedShapes = ActiveCanvas.SelectShapeAt(XPoint, YPoint, SelectionWidth, SelectionHeight);
+                    SelectedShapes = ActiveCanvas.SelectShapeAt(XPoint, YPoint, SelectionArea.Width, SelectionArea.Height);
+                    ActiveCanvas.RemoveDrawnShape(SelectionArea);
                 }
+            }
+            else if (Event.Button == MouseButtons.Right)
+            {
+                ActiveCanvas.RemoveDrawnShape(MovementTrace);
+                this.xAmount = Event.X - XPoint;
+                this.yAmount = Event.Y - YPoint;
+                Command = new MoveShapeCommand(SelectedShapes, XPoint, YPoint, xAmount, yAmount);
+                Command.Execute();
             }
         }
 
@@ -110,7 +162,15 @@ namespace EasyPaint.Tool
 
         public void ToolKeyUp(object Sender, KeyEventArgs Event)
         {
-
+            if (Event.KeyCode == Keys.G)
+            {
+                if (SelectedShapes != null && SelectedShapes.Count != 0)
+                {
+                    Command = new GroupShapeCommand(ActiveCanvas, SelectedShapes);
+                    Command.Execute();
+                    SelectedShapes.Clear();
+                }
+            }
         }
 
         public void ToolKeyDown(object Sender, KeyEventArgs Event)

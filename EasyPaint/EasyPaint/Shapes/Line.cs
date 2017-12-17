@@ -20,11 +20,6 @@ namespace EasyPaint.Shapes
             DrawingPen.Width = 1.5f;
         }
 
-        public void SetColor(Color SelectedColor)
-        {
-            OutlineColor = SelectedColor;
-        }
-
         public Line(Point InputPoint) : this()
         {
             this.Startpoint = InputPoint;

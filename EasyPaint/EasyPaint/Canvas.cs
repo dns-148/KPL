@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Shapes;
 
@@ -15,6 +16,7 @@ namespace EasyPaint
         {
             this.ShapesDrawn = new List<Shape>();
             this.DoubleBuffered = true;
+            this.Name = "Untitled";
 
             this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
@@ -28,7 +30,7 @@ namespace EasyPaint
             this.KeyUp += CanvasKeyUp;
         }
 
-        private void CanvasKeyUp(object Sender, KeyEventArgs Event)
+        public void CanvasKeyUp(object Sender, KeyEventArgs Event)
         {
             if (this.ActiveTool != null)
             {
@@ -36,7 +38,7 @@ namespace EasyPaint
             }
         }
 
-        private void CanvasKeyDown(object Sender, KeyEventArgs Event)
+        public void CanvasKeyDown(object Sender, KeyEventArgs Event)
         {
             if (this.ActiveTool != null)
             {

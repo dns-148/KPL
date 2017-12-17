@@ -36,8 +36,8 @@ namespace EasyPaint.Tool
 
         public RectangleTool()
         {
-            this.Name = "Ellipse Tool";
-            this.ToolTipText = "Ellipse Tool";
+            this.Name = "Rectangle Tool";
+            this.ToolTipText = "Rectangle Tool";
             this.Image = Icon.rectangle;
             this.CheckOnClick = true;
         }
@@ -93,11 +93,6 @@ namespace EasyPaint.Tool
                     Command = new DrawRectangleCommand(ActiveCanvas, XPoint, YPoint, this.RectangleShape.Width, this.RectangleShape.Height);
                     ActiveCanvas.RemoveDrawnShape(this.RectangleShape);
                     Command.Execute();
-                }
-                else if (Event.Button == MouseButtons.Right)
-                {
-                    Command.UnExecute();
-                    Command = null;
                 }
             }
         }

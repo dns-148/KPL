@@ -53,7 +53,6 @@
     <Compile Include="Commands\DrawRectangleCommand.cs" />
     <Compile Include="Commands\GroupShapeCommand.cs" />
     <Compile Include="Commands\MoveShapeCommand.cs" />
-    <Compile Include="Commands\SelectShapeCommand.cs" />
     <Compile Include="Icon.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -63,6 +62,7 @@
     <Compile Include="Shapes\CompositeShape.cs" />
     <Compile Include="Shapes\Ellipse.cs" />
     <Compile Include="Shapes\Line.cs" />
+    <Compile Include="Shapes\MovementLine.cs" />
     <Compile Include="Shapes\Rectangle.cs" />
     <Compile Include="Shapes\Selection.cs" />
     <Compile Include="State\BasicState.cs" />
