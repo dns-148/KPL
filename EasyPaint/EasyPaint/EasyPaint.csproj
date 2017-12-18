@@ -48,6 +48,7 @@
     <Compile Include="Canvas.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Commands\ChangeOutlineColorCommand.cs" />
     <Compile Include="Commands\DrawEllipseCommand.cs" />
     <Compile Include="Commands\DrawLineCommand.cs" />
     <Compile Include="Commands\DrawRectangleCommand.cs" />
@@ -87,6 +88,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ToolBar\Toolbar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tool\LineFillTool.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\Toolbox.cs">
@@ -145,6 +149,20 @@
   <ItemGroup>
     <None Include="Image\selectionTool.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Image\undo256x256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\redo256x256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\reset256x256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\fillicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\outlineicon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

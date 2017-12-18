@@ -29,6 +29,9 @@ namespace EasyPaint
 
         private void SetTool()
         {
+            // 
+            // Toolbar
+            // 
             ToolBar = new Toolbar();
             ToolBar.SetActiveCanvas(DrawingCanvas);
             ToolBar.ItemClicked += new ToolStripItemClickedEventHandler(Toolbar_ItemClicked);
@@ -36,6 +39,10 @@ namespace EasyPaint
             OutlineColorChooser OColorChooser = new OutlineColorChooser();
             ToolBar.AddTool(OColorChooser);
 
+            this.Controls.Add(ToolBar);
+            // 
+            // Toolbox
+            // 
             ToolBox = new Toolbox();
             ToolBox.SetActiveCanvas(DrawingCanvas);
 
@@ -55,8 +62,12 @@ namespace EasyPaint
             SelectionTool SelectionToolStrip = new SelectionTool();
             SelectionToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
             ToolBox.AddTool(SelectionToolStrip);
+            ToolBox.AddSeparator();
 
-            this.Controls.Add(ToolBar);
+            LineFillTool LineFillToolStrip = new LineFillTool();
+            LineFillToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            ToolBox.AddTool(LineFillToolStrip);
+
             this.Controls.Add(ToolBox);
         }
 

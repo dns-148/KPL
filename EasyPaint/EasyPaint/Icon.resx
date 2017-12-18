@@ -121,13 +121,28 @@
   <data name="circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Image\circle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fillicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Image\fillicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="line" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>image\line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="outlineicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Image\outlineicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Image\rectangle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="redo256x256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Image\redo256x256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset256x256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Image\reset256x256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="selectionTool" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Image\selectionTool.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="undo256x256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Image\undo256x256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
