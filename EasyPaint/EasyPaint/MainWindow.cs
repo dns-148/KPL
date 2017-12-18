@@ -74,6 +74,10 @@ namespace EasyPaint
             LineFillToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
             ToolBox.AddTool(LineFillToolStrip);
 
+            FillTool FillToolStrip = new FillTool();
+            FillToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            ToolBox.AddTool(FillToolStrip);
+
             this.Controls.Add(ToolBox);
         }
 

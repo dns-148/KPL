@@ -48,6 +48,7 @@
     <Compile Include="Canvas.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Commands\ChangeFillColorCommand.cs" />
     <Compile Include="Commands\ChangeOutlineColorCommand.cs" />
     <Compile Include="Commands\DrawEllipseCommand.cs" />
     <Compile Include="Commands\DrawLineCommand.cs" />
@@ -91,6 +92,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ToolBar\Toolbar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tool\FillTool.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\LineFillTool.cs">
@@ -166,6 +170,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\outlineicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Observer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
