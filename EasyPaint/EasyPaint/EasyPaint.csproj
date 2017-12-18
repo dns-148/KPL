@@ -60,6 +60,7 @@
       <DependentUpon>Icon.resx</DependentUpon>
     </Compile>
     <Compile Include="InterfaceClass\ICommand.cs" />
+    <Compile Include="InterfaceClass\IToolbarItem.cs" />
     <Compile Include="Shapes\CompositeShape.cs" />
     <Compile Include="Shapes\Ellipse.cs" />
     <Compile Include="Shapes\Line.cs" />
@@ -79,7 +80,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="State\ModifyState.cs" />
     <Compile Include="State\NormalState.cs" />
-    <Compile Include="Toolbox.cs">
+    <Compile Include="BaseToolPlace.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToolBar\OutlineColorChooser.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToolBar\Toolbar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tool\Toolbox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\EllipseTool.cs">
@@ -135,5 +145,6 @@
   <ItemGroup>
     <None Include="Image\selectionTool.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

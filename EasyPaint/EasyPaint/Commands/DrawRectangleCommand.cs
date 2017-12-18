@@ -1,12 +1,14 @@
 ﻿using EasyPaint.InterfaceClass;
 using EasyPaint.Shapes;
+using System.Drawing;
 
 namespace EasyPaint.Commands
 {
     public class DrawRectangleCommand : ICommand
     {
         private Canvas ActiveCanvas;
-        private Rectangle RectangleShape;
+        private EasyPaint.Shapes.Rectangle RectangleShape;
+        private Color LineColor;
         private int X;
         private int Y;
         private int Width;
@@ -16,6 +18,7 @@ namespace EasyPaint.Commands
         public DrawRectangleCommand(Canvas InputCanvas, int XPoint, int YPoint, int Width, int Height)
         {
             this.ActiveCanvas = InputCanvas;
+            this.LineColor = ActiveCanvas.LineColor;
             this.Width = Width;
             this.Height = Height;
             this.X = XPoint;
@@ -24,7 +27,8 @@ namespace EasyPaint.Commands
 
         public void Execute()
         {
-            RectangleShape = new Rectangle(X, Y, Width, Height);
+            RectangleShape = new EasyPaint.Shapes.Rectangle(X, Y, Width, Height);
+            RectangleShape.SetOutlineColor(LineColor);
             this.ActiveCanvas.AddDrawnShape(this.RectangleShape);
         }
 

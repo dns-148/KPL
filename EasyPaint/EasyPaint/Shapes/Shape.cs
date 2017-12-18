@@ -66,5 +66,15 @@ namespace EasyPaint.Shapes
 
         protected Color OutlineColor;
         protected Color FillColor;
+
+        public virtual void SetOutlineColor(Color InputColor)
+        {
+            OutlineColor = InputColor;
+        }
+
+        public Color GetOutlineColor()
+        {
+            return OutlineColor;
+        }
     }
 }

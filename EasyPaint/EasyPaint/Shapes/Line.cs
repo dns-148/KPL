@@ -15,8 +15,8 @@ namespace EasyPaint.Shapes
 
         public Line()
         {
-            this.DrawingPen = new Pen(Color.Black);
             OutlineColor = Color.Black;
+            this.DrawingPen = new Pen(OutlineColor);
             DrawingPen.Width = 1.5f;
         }
 

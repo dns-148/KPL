@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 
 namespace EasyPaint.Shapes
 {
     public class CompositeShape : Shape
     {
         List<Shape> GroupShape;
-        List<Graphics> GraphicShapes;
 
         public CompositeShape()
         {
@@ -91,7 +88,6 @@ namespace EasyPaint.Shapes
         public void RemoveAll()
         {
             GroupShape.Clear();
-            GraphicShapes.Clear();
         }
     }
 }

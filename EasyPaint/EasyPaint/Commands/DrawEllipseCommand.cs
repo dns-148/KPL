@@ -1,5 +1,6 @@
 ﻿using EasyPaint.InterfaceClass;
 using EasyPaint.Shapes;
+using System.Drawing;
 
 namespace EasyPaint.Commands
 {
@@ -7,6 +8,7 @@ namespace EasyPaint.Commands
     {
         private Canvas ActiveCanvas;
         private Ellipse EllipseShape;
+        private Color LineColor;
         private int X;
         private int Y;
         private int Width;
@@ -16,6 +18,7 @@ namespace EasyPaint.Commands
         public DrawEllipseCommand(Canvas InputCanvas, int XPoint, int YPoint, int Width, int Height)
         {
             this.ActiveCanvas = InputCanvas;
+            this.LineColor = ActiveCanvas.LineColor;
             this.Width = Width;
             this.Height = Height;
             this.X = XPoint;
@@ -25,6 +28,7 @@ namespace EasyPaint.Commands
         public void Execute()
         {
             EllipseShape = new Ellipse(X, Y, Width, Height);
+            EllipseShape.SetOutlineColor(LineColor);
             this.ActiveCanvas.AddDrawnShape(this.EllipseShape);
         }
 

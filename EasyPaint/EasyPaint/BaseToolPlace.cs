@@ -3,20 +3,10 @@ using EasyPaint.InterfaceClass;
 
 namespace EasyPaint
 {
-    public class Toolbox : ToolStrip
+    public class BaseToolPlace : ToolStrip
     {
         private Canvas ActiveCanvas;
 
-        public Toolbox()
-        {
-            this.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Location = new System.Drawing.Point(0, 50);
-            this.Name = "ToolBox";
-            this.Size = new System.Drawing.Size(24, 420);
-            this.TabIndex = 0;
-            this.Text = "Toolbox";
-        }
-        
         public void SetActiveCanvas(Canvas SelectedCanvas)
         {
             ActiveCanvas = SelectedCanvas;
@@ -32,10 +22,9 @@ namespace EasyPaint
             this.Items.Add(new System.Windows.Forms.ToolStripSeparator());
         }
 
-        public void AddTool(ITool Tool)
+        public void AddTool(ToolStripButton Tool)
         {
-            Tool.TargetCanvas = ActiveCanvas;
-            this.Items.Add((ToolStripButton)Tool);
+            this.Items.Add(Tool);
         }
     }
 }

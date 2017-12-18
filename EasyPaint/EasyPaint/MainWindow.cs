@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Tool;
+using EasyPaint.ToolBar;
 using System.IO;
 using System.Text;
 using EasyPaint.Shapes;
@@ -15,18 +16,26 @@ namespace EasyPaint
         private ITool ActiveTool;
         private Canvas DrawingCanvas;
         private Toolbox ToolBox;
+        private Toolbar ToolBar;
         private System.Windows.Forms.TabControl tabControl;
 
         public MainWindow()
         {
             this.MaximizeBox = false;
             SetCanvas();
-            SetToolbox();
+            SetTool();
             InitializeComponent();
         }
 
-        private void SetToolbox()
+        private void SetTool()
         {
+            ToolBar = new Toolbar();
+            ToolBar.SetActiveCanvas(DrawingCanvas);
+            ToolBar.ItemClicked += new ToolStripItemClickedEventHandler(Toolbar_ItemClicked);
+
+            OutlineColorChooser OColorChooser = new OutlineColorChooser();
+            ToolBar.AddTool(OColorChooser);
+
             ToolBox = new Toolbox();
             ToolBox.SetActiveCanvas(DrawingCanvas);
 
@@ -47,6 +56,7 @@ namespace EasyPaint
             SelectionToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
             ToolBox.AddTool(SelectionToolStrip);
 
+            this.Controls.Add(ToolBar);
             this.Controls.Add(ToolBox);
         }
 
@@ -71,6 +81,12 @@ namespace EasyPaint
             this.KeyUp += DrawingCanvas.CanvasKeyUp;
         }
 
+        public void Toolbar_ItemClicked(object Sender, ToolStripItemClickedEventArgs Event)
+        {
+            IToolbarItem SelectedToolbarItem = (IToolbarItem)Event.ClickedItem;
+            SelectedToolbarItem.TargetCanvas = DrawingCanvas;
+        }
+
         public void Toolbox_ItemClicked(object Sender, EventArgs Event)
         {
             ToolStripButton SelectedTool = (ToolStripButton)Sender;
@@ -85,9 +101,11 @@ namespace EasyPaint
                         ToolItem.Checked = false;
                     }
                 }
-                DrawingCanvas.SetActiveTool((ITool)SelectedTool);
                 SelectedTool.Checked = true;
-                ActiveTool = (ITool)Sender;
+                ITool Selectedtool = (ITool)SelectedTool;
+                DrawingCanvas.SetActiveTool(Selectedtool);
+                Selectedtool.TargetCanvas = DrawingCanvas;
+                ActiveTool = Selectedtool;
             }
             else
             {

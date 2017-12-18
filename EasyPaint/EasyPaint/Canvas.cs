@@ -10,9 +10,23 @@ namespace EasyPaint
     public class Canvas : Control
     {
         private ITool ActiveTool;
+        private Color ActiveOutlineColor;
         private List<Shape> ShapesDrawn;
         private List<Shape> memory_stack;
         private Shape temp;
+
+        public Color LineColor{
+            get
+            {
+                return ActiveOutlineColor;
+            }
+
+            set
+            {
+                ActiveOutlineColor = value;
+            }
+
+        }
 
         public Canvas()
         {
@@ -20,6 +34,7 @@ namespace EasyPaint
             this.memory_stack = new List<Shape>();
             this.DoubleBuffered = true;
             this.Name = "Untitled";
+            this.ActiveOutlineColor = Color.Black;
 
             this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
