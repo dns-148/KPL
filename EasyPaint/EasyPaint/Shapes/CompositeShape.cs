@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 
 namespace EasyPaint.Shapes
 {
@@ -9,6 +10,24 @@ namespace EasyPaint.Shapes
         public CompositeShape()
         {
             GroupShape = new List<Shape>();
+        }
+
+        public override void SetFillColor(Color InputColor)
+        {
+            base.SetFillColor(InputColor);
+            foreach (Shape SelectedShape in GroupShape)
+            {
+                SelectedShape.SetFillColor(InputColor);
+            }
+        }
+
+        public override void SetOutlineColor(Color InputColor)
+        {
+            base.SetOutlineColor(InputColor);
+            foreach (Shape SelectedShape in GroupShape)
+            {
+                SelectedShape.SetOutlineColor(InputColor);
+            }
         }
 
         public override bool Inside(int xOuter, int yOuter, int WidthOuter, int HeightOuter)

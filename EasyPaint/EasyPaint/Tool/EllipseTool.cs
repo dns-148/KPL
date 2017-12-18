@@ -49,6 +49,7 @@ namespace EasyPaint.Tool
                 XPoint = Event.X;
                 YPoint = Event.Y;
                 this.EllipseShape = new Ellipse(Event.X, Event.Y);
+                EllipseShape.SetFillColor(ActiveCanvas.FillColor);
                 this.ActiveCanvas.AddDrawnShape(this.EllipseShape);
                 EllipseShape.Select();
             }

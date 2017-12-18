@@ -49,6 +49,7 @@ namespace EasyPaint.Tool
                 XPoint = Event.X;
                 YPoint = Event.Y;
                 this.RectangleShape = new Rectangle(Event.X, Event.Y);
+                RectangleShape.SetFillColor(ActiveCanvas.FillColor);
                 this.ActiveCanvas.AddDrawnShape(this.RectangleShape);
                 RectangleShape.Select();
             }

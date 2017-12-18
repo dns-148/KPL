@@ -84,6 +84,9 @@
     <Compile Include="BaseToolPlace.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ToolBar\FillColorChooser.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ToolBar\OutlineColorChooser.cs">
       <SubType>Component</SubType>
     </Compile>

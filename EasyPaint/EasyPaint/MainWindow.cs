@@ -34,10 +34,16 @@ namespace EasyPaint
             // 
             ToolBar = new Toolbar();
             ToolBar.SetActiveCanvas(DrawingCanvas);
+            ToolBar.AddSeparator();
             ToolBar.ItemClicked += new ToolStripItemClickedEventHandler(Toolbar_ItemClicked);
 
             OutlineColorChooser OColorChooser = new OutlineColorChooser();
             ToolBar.AddTool(OColorChooser);
+            ToolBar.AddSeparator();
+
+            FillColorChooser IColorChooser = new FillColorChooser();
+            ToolBar.AddTool(IColorChooser);
+            ToolBar.AddSeparator();
 
             this.Controls.Add(ToolBar);
             // 
@@ -101,6 +107,7 @@ namespace EasyPaint
         public void Toolbox_ItemClicked(object Sender, EventArgs Event)
         {
             ToolStripButton SelectedTool = (ToolStripButton)Sender;
+            DrawingCanvas.DeselectAllShapes();
 
             if (ActiveTool != SelectedTool)
             {

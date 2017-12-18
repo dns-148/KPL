@@ -12,11 +12,14 @@ namespace EasyPaint.Shapes
         public int Height { get; set; }
 
         private Pen DrawingPen;
+        private SolidBrush Brush;
 
         public Ellipse()
         {
-            this.DrawingPen = new Pen(Color.Black);
             OutlineColor = Color.Black;
+            FillColor = Color.White;
+            this.DrawingPen = new Pen(OutlineColor);
+            this.Brush = new SolidBrush(FillColor);
             DrawingPen.Width = 1.5f;
         }
 
@@ -53,26 +56,29 @@ namespace EasyPaint.Shapes
         public override void RenderOnNormal()
         {
             DrawingPen.Color = OutlineColor;
+            Brush.Color = FillColor;
             DrawingPen.DashStyle = DashStyle.Solid;
-            System.Drawing.Rectangle BoundingRectangle = new System.Drawing.Rectangle(X, Y, Width, Height);
+
 
             if (this.GetGraphics() != null)
             {
                 GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
-                GetGraphics().DrawEllipse(DrawingPen, BoundingRectangle);
+                GetGraphics().FillEllipse(Brush, X, Y, Width, Height);
+                GetGraphics().DrawEllipse(DrawingPen, X, Y, Width, Height);
             }
         }
 
         public override void RenderOnModify()
         {
             DrawingPen.Color = Color.Blue;
+            Brush.Color = FillColor;
             DrawingPen.DashStyle = DashStyle.DashDotDot;
-            System.Drawing.Rectangle BoundingRectangle = new System.Drawing.Rectangle(X, Y, Width, Height);
 
             if (GetGraphics() != null)
             {
                 GetGraphics().SmoothingMode = SmoothingMode.AntiAlias;
-                GetGraphics().DrawEllipse(DrawingPen, BoundingRectangle);
+                GetGraphics().FillEllipse(Brush, X, Y, Width, Height);
+                GetGraphics().DrawEllipse(DrawingPen, X, Y, Width, Height);
             }
         }
 

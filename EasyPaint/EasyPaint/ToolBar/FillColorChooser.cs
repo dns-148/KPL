@@ -5,10 +5,10 @@ using System.Drawing;
 
 namespace EasyPaint.ToolBar
 {
-    public class OutlineColorChooser : ToolStripButton, IToolbarItem
+    public class FillColorChooser : ToolStripButton, IToolbarItem
     {
         private Canvas ActiveCanvas;
-        public Color OutlineColor;
+        public Color FillColor;
 
         public Canvas TargetCanvas
         {
@@ -23,12 +23,12 @@ namespace EasyPaint.ToolBar
             }
         }
 
-        public OutlineColorChooser()
+        public FillColorChooser()
         {
             this.Name = "Outline Color Chooser";
             this.ToolTipText = "Outline Color Chooser";
-            OutlineColor = Color.Black;
-            this.BackColor = OutlineColor;
+            FillColor = Color.White;
+            this.BackColor = FillColor;
             this.CheckOnClick = true;
             this.Click += ItemAction;
         }
@@ -39,9 +39,9 @@ namespace EasyPaint.ToolBar
             ColorDialog PopUp = new ColorDialog();
             if (PopUp.ShowDialog() == DialogResult.OK)
             {
-                OutlineColor = PopUp.Color;
-                this.BackColor = OutlineColor;
-                this.ActiveCanvas.LineColor = OutlineColor;
+                this.FillColor = PopUp.Color;
+                this.BackColor = FillColor;
+                this.ActiveCanvas.FillColor = this.FillColor;
             }
         }
     }

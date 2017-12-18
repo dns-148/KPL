@@ -9,6 +9,7 @@ namespace EasyPaint.Commands
         private Canvas ActiveCanvas;
         private Ellipse EllipseShape;
         private Color LineColor;
+        private Color FillColor;
         private int X;
         private int Y;
         private int Width;
@@ -19,6 +20,7 @@ namespace EasyPaint.Commands
         {
             this.ActiveCanvas = InputCanvas;
             this.LineColor = ActiveCanvas.LineColor;
+            this.FillColor = ActiveCanvas.FillColor;
             this.Width = Width;
             this.Height = Height;
             this.X = XPoint;
@@ -29,6 +31,7 @@ namespace EasyPaint.Commands
         {
             EllipseShape = new Ellipse(X, Y, Width, Height);
             EllipseShape.SetOutlineColor(LineColor);
+            EllipseShape.SetFillColor(FillColor);
             this.ActiveCanvas.AddDrawnShape(this.EllipseShape);
         }
 

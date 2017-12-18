@@ -11,6 +11,7 @@ namespace EasyPaint
     {
         private ITool ActiveTool;
         private Color ActiveOutlineColor;
+        private Color ActiveInsideColor;
         private List<Shape> ShapesDrawn;
         private List<Shape> memory_stack;
         private Shape temp;
@@ -28,6 +29,20 @@ namespace EasyPaint
 
         }
 
+        public Color FillColor
+        {
+            get
+            {
+                return ActiveInsideColor;
+            }
+
+            set
+            {
+                ActiveInsideColor = value;
+            }
+
+        }
+
         public Canvas()
         {
             this.ShapesDrawn = new List<Shape>();
@@ -35,6 +50,7 @@ namespace EasyPaint
             this.DoubleBuffered = true;
             this.Name = "Untitled";
             this.ActiveOutlineColor = Color.Black;
+            this.ActiveInsideColor = Color.White;
 
             this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
