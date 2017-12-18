@@ -122,7 +122,12 @@ namespace EasyPaint
         {
             this.ShapesDrawn.Remove(SelectedShape);
         }
-
+        
+        public List<Shape> GetAllShapesDrawn()
+        {
+            return this.ShapesDrawn;
+        }
+        
         public Shape GetShapeAt(int x, int y)
         {
             foreach (Shape SelectedShape in ShapesDrawn)
