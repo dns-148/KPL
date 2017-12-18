@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Tool;
 using System.IO;
+using System.Text;
+using EasyPaint.Shapes;
 
 namespace EasyPaint
 {
@@ -108,7 +110,15 @@ namespace EasyPaint
             {
                 if ((myStream = saveFileDialog1.OpenFile()) != null)
                 {
-                    // Code to write the stream goes here.
+                    string value;
+                    value = "";
+                    List<Shape> Shapes= DrawingCanvas.GetAllShapesDrawn();
+                    foreach (Shape Shape in Shapes)
+                    {
+                        //value += Shape;   //yang mau dimasukkin ke teks
+                    }
+                    byte[] info = new UTF8Encoding(true).GetBytes(value);
+                    myStream.Write(info, 0, info.Length);
                     myStream.Close();
                 }
             }

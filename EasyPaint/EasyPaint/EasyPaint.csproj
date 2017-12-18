@@ -53,6 +53,7 @@
     <Compile Include="Commands\DrawRectangleCommand.cs" />
     <Compile Include="Commands\GroupShapeCommand.cs" />
     <Compile Include="Commands\MoveShapeCommand.cs" />
+    <Compile Include="Commands\UndoRedoCommand.cs" />
     <Compile Include="Icon.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -18,3 +18,14 @@ F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Properties.Resources.r
 F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.GenerateResource.Cache
 F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe
 F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.pdb
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe.config
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\bin\Debug\EasyPaint.pdb
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csprojResolveAssemblyReference.cache
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Icon.resources
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\obj\Debug\EasyPaint.MainWindow.resources
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Properties.Resources.resources
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.GenerateResource.Cache
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.CoreCompileInputs.cache
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\obj\Debug\EasyPaint.exe
+C:\Users\iksan\Desktop\kplkpl\EasyPaint\EasyPaint\obj\Debug\EasyPaint.pdb
