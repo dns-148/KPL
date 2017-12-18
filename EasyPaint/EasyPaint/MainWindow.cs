@@ -93,5 +93,19 @@ namespace EasyPaint
                 ActiveTool = null;
             }
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("File Saved");
+        }
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("File Loaded");
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("File Exported");
+        }
     }
 }

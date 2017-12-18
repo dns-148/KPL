@@ -8,3 +8,13 @@ D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.GenerateResource.Cach
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.exe
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.pdb
 D:\repo\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csprojResolveAssemblyReference.cache
+F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe.config
+F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.exe
+F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.pdb
+F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csprojResolveAssemblyReference.cache
+F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Icon.resources
+F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.MainWindow.resources
+F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.Properties.Resources.resources
+F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\obj\Debug\EasyPaint.csproj.GenerateResource.Cache
+F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.exe
+F:\kuliah\kpl\KPL\EasyPaint\EasyPaint\bin\Debug\EasyPaint.pdb
