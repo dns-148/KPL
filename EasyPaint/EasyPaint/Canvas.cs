@@ -11,10 +11,13 @@ namespace EasyPaint
     {
         private ITool ActiveTool;
         private List<Shape> ShapesDrawn;
+        private List<Shape> memory_stack;
+        private Shape temp;
 
         public Canvas()
         {
             this.ShapesDrawn = new List<Shape>();
+            this.memory_stack = new List<Shape>();
             this.DoubleBuffered = true;
             this.Name = "Untitled";
 
@@ -28,6 +31,33 @@ namespace EasyPaint
             this.MouseDoubleClick += CanvasMouseDoubleClick;
             this.KeyDown += CanvasKeyDown;
             this.KeyUp += CanvasKeyUp;
+        }
+
+        public void Undo()
+        {
+            var last = ShapesDrawn.Count - 1;
+            if (last >= 0)
+            {
+                this.temp = ShapesDrawn[ShapesDrawn.Count - 1];
+                ShapesDrawn.RemoveAt(ShapesDrawn.Count - 1);
+                memory_stack.Add(temp);
+                Debug.WriteLine("Undo is selected");
+                this.CanvasRepaint();
+            }
+
+        }
+
+        public void Redo()
+        {
+            var last = memory_stack.Count - 1;
+            if (last >= 0)
+            {
+                this.temp = memory_stack[memory_stack.Count - 1];
+                memory_stack.RemoveAt(memory_stack.Count - 1);
+                ShapesDrawn.Add(temp);
+                Debug.WriteLine("Redo is selected");
+                this.CanvasRepaint();
+            }
         }
 
         public void CanvasKeyUp(object Sender, KeyEventArgs Event)
@@ -122,12 +152,12 @@ namespace EasyPaint
         {
             this.ShapesDrawn.Remove(SelectedShape);
         }
-        
+
         public List<Shape> GetAllShapesDrawn()
         {
             return this.ShapesDrawn;
         }
-        
+
         public Shape GetShapeAt(int x, int y)
         {
             foreach (Shape SelectedShape in ShapesDrawn)
