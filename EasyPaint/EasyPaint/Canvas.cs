@@ -16,12 +16,16 @@ namespace EasyPaint
         private List<Shape> memory_stack;
         private Shape temp;
 
+        public List<Shape> GetAllShape()
+        {
+            return ShapesDrawn;
+        }
+
         public Canvas()
         {
             this.ShapesDrawn = new List<Shape>();
             this.memory_stack = new List<Shape>();
             this.DoubleBuffered = true;
-            this.Name = "Untitled";
             this.UndoStack = new Stack<ICommand>();
             this.RedoStack = new Stack<ICommand>();
 

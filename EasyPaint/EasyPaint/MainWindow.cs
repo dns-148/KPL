@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Drawing;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Tool;
 using EasyPaint.ToolBar;
@@ -92,6 +93,8 @@ namespace EasyPaint
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             DrawingCanvas = new Canvas();
+            DrawingCanvas.Name = "Untitled";
+            DrawingCanvas.Text = "Untitled";
 
             TabPage tabPage = new TabPage(DrawingCanvas.Name);
             // 
@@ -183,13 +186,16 @@ namespace EasyPaint
                     myStream.Close();
                 }
             }
+            string FileName = Path.GetFileNameWithoutExtension(saveFileDialog1.FileName);
+            DrawingCanvas.Name = FileName;
+            DrawingCanvas.Text = FileName;
             MessageBox.Show("File Saved");
         }
+
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
             openFileDialog1.InitialDirectory = "c:\\";
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 2;
@@ -216,8 +222,25 @@ namespace EasyPaint
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("File Exported");
-        }
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Portable Network Graphic (*.png)|*.png";
+            saveFileDialog1.Title = "Export an Document";
+            saveFileDialog1.ShowDialog();
+            string filename = saveFileDialog1.FileName;
+            Bitmap AllImage = new Bitmap(845, 495);
+            System.Drawing.Rectangle Background = new System.Drawing.Rectangle(0, 0, 845, 495);
+            DrawToBitmap(AllImage, Background);
 
+            Bitmap NewImage = new Bitmap(600, 400);
+            using (Graphics UsedGraphic = Graphics.FromImage(NewImage))
+            {
+                UsedGraphic.DrawImage(AllImage, 0, 0, new System.Drawing.Rectangle(33, 101, 596, 377), GraphicsUnit.Pixel);
+            }
+
+            if (filename != "")
+            {
+                NewImage.Save(filename, System.Drawing.Imaging.ImageFormat.Png);
+            }
+        }
     }
 }

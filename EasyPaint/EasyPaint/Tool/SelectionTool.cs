@@ -128,6 +128,7 @@ namespace EasyPaint.Tool
         {
             if (Event.Button == MouseButtons.Left)
             {
+                Debug.WriteLine("{0} {1} {2} {3}", XPoint, YPoint, Event.X-XPoint, Event.Y - YPoint);
                 if (SelectionArea != null)
                 {
                     ActiveCanvas.DeselectAllShapes();
