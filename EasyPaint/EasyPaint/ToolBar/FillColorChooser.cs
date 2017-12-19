@@ -25,8 +25,8 @@ namespace EasyPaint.ToolBar
 
         public FillColorChooser()
         {
-            this.Name = "Outline Color Chooser";
-            this.ToolTipText = "Outline Color Chooser";
+            this.Name = "Fill Color Chooser";
+            this.ToolTipText = "Fill Color Chooser";
             FillColor = Color.White;
             this.BackColor = FillColor;
             this.CheckOnClick = true;
