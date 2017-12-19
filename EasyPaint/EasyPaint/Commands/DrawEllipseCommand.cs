@@ -16,22 +16,22 @@ namespace EasyPaint.Commands
         private int Height;
 
 
-        public DrawEllipseCommand(Canvas InputCanvas, int XPoint, int YPoint, int Width, int Height)
+        public DrawEllipseCommand(Canvas InputCanvas, Color ILineColor, Color IFillColor, int XPoint, int YPoint, int Width, int Height)
         {
             this.ActiveCanvas = InputCanvas;
-            this.LineColor = ActiveCanvas.LineColor;
-            this.FillColor = ActiveCanvas.FillColor;
+            this.LineColor = ILineColor;
+            this.FillColor = IFillColor;
             this.Width = Width;
             this.Height = Height;
             this.X = XPoint;
             this.Y = YPoint;
+            EllipseShape = new Ellipse(X, Y, Width, Height);
+            EllipseShape.SetOutlineColor(LineColor);
+            EllipseShape.SetFillColor(FillColor);
         }
 
         public void Execute()
         {
-            EllipseShape = new Ellipse(X, Y, Width, Height);
-            EllipseShape.SetOutlineColor(LineColor);
-            EllipseShape.SetFillColor(FillColor);
             this.ActiveCanvas.AddDrawnShape(this.EllipseShape);
         }
 

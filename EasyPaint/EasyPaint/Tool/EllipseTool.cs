@@ -1,17 +1,51 @@
 ﻿using EasyPaint.Shapes;
+using EasyPaint.Subject;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Commands;
+using System;
 using System.Windows.Forms;
 
 namespace EasyPaint.Tool
 {
-    public class EllipseTool : ToolStripButton, ITool
+    public class EllipseTool : ToolStripButton, ITool, IObserver<FillColorSubject>, IObserver<LineColorSubject>
     {
         private Canvas ActiveCanvas;
         private ICommand Command;
         private Ellipse EllipseShape;
+        private FillColorSubject FillColor;
+        private LineColorSubject LineColor;
         private int XPoint;
         private int YPoint;
+
+        public void OnCompleted()
+        {
+
+        }
+
+        public void OnError(Exception E)
+        {
+
+        }
+
+        public void OnNext(FillColorSubject NewInfo)
+        {
+            FillColor = NewInfo;
+        }
+
+        public void OnNext(LineColorSubject NewInfo)
+        {
+            LineColor = NewInfo;
+        }
+
+        public void SubscribeFill(IObservable<FillColorSubject> Provider)
+        {
+            Provider.Subscribe(this);
+        }
+
+        public void SubscribeLine(IObservable<LineColorSubject> Provider)
+        {
+            Provider.Subscribe(this);
+        }
 
         public Cursor Cursor
         {
@@ -49,7 +83,7 @@ namespace EasyPaint.Tool
                 XPoint = Event.X;
                 YPoint = Event.Y;
                 this.EllipseShape = new Ellipse(Event.X, Event.Y);
-                EllipseShape.SetFillColor(ActiveCanvas.FillColor);
+                EllipseShape.SetFillColor(FillColor.Info);
                 this.ActiveCanvas.AddDrawnShape(this.EllipseShape);
                 EllipseShape.Select();
             }
@@ -91,8 +125,9 @@ namespace EasyPaint.Tool
             {
                 if (Event.Button == MouseButtons.Left)
                 {
-                    Command = new DrawEllipseCommand(ActiveCanvas, XPoint, YPoint, this.EllipseShape.Width, this.EllipseShape.Height);
+                    Command = new DrawEllipseCommand(ActiveCanvas, LineColor.Info, FillColor.Info, XPoint, YPoint, this.EllipseShape.Width, this.EllipseShape.Height);
                     ActiveCanvas.RemoveDrawnShape(this.EllipseShape);
+                    ActiveCanvas.AddCommandtoStack(Command);
                     Command.Execute();
                 }
             }

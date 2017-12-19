@@ -10,38 +10,11 @@ namespace EasyPaint
     public class Canvas : Control
     {
         private ITool ActiveTool;
-        private Color ActiveOutlineColor;
-        private Color ActiveInsideColor;
+        private Stack<ICommand> UndoStack;
+        private Stack<ICommand> RedoStack;
         private List<Shape> ShapesDrawn;
         private List<Shape> memory_stack;
         private Shape temp;
-
-        public Color LineColor{
-            get
-            {
-                return ActiveOutlineColor;
-            }
-
-            set
-            {
-                ActiveOutlineColor = value;
-            }
-
-        }
-
-        public Color FillColor
-        {
-            get
-            {
-                return ActiveInsideColor;
-            }
-
-            set
-            {
-                ActiveInsideColor = value;
-            }
-
-        }
 
         public Canvas()
         {
@@ -49,8 +22,8 @@ namespace EasyPaint
             this.memory_stack = new List<Shape>();
             this.DoubleBuffered = true;
             this.Name = "Untitled";
-            this.ActiveOutlineColor = Color.Black;
-            this.ActiveInsideColor = Color.White;
+            this.UndoStack = new Stack<ICommand>();
+            this.RedoStack = new Stack<ICommand>();
 
             this.BackColor = Color.White;
             this.Dock = DockStyle.Fill;
@@ -62,6 +35,11 @@ namespace EasyPaint
             this.MouseDoubleClick += CanvasMouseDoubleClick;
             this.KeyDown += CanvasKeyDown;
             this.KeyUp += CanvasKeyUp;
+        }
+
+        public void AddCommandtoStack(ICommand InputCommand)
+        {
+            UndoStack.Push(InputCommand);
         }
 
         public void Undo()

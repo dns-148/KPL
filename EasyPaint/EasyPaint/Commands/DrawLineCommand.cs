@@ -15,24 +15,25 @@ namespace EasyPaint.Commands
         private int yEndpoint;
 
 
-        public DrawLineCommand(Canvas canvas, int xStartpoint, int yStartpoint, int xEndpoint, int yEndpoint)
+        public DrawLineCommand(Canvas canvas, Color ILineColor, int xStartpoint, int yStartpoint, int xEndpoint, int yEndpoint)
         {
             this.ActiveCanvas = canvas;
-            this.LineColor = ActiveCanvas.LineColor;
+            this.LineColor = ILineColor;
             this.xEndpoint = xEndpoint;
             this.yEndpoint = yEndpoint;
             this.xStartpoint = xStartpoint;
             this.yStartpoint = yStartpoint;
+            LineShape = new Line(new System.Drawing.Point(xStartpoint, yStartpoint))
+            {
+                Endpoint = new System.Drawing.Point(xEndpoint, yEndpoint)
+            };
+            LineShape.SetOutlineColor(LineColor);
+
         }
 
         public void Execute()
         {
-            LineShape = new Line(new System.Drawing.Point(xStartpoint, yStartpoint)){
-                Endpoint = new System.Drawing.Point(xEndpoint, yEndpoint)
-            };
-            LineShape.SetOutlineColor(LineColor);
             ActiveCanvas.AddDrawnShape(LineShape);
-
         }
 
         public void UnExecute()

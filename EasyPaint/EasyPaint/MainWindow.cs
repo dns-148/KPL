@@ -54,14 +54,19 @@ namespace EasyPaint
 
             LineTool LineToolStrip = new LineTool();
             LineToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            LineToolStrip.SubscribeLine(OColorChooser);
             ToolBox.AddTool(LineToolStrip);
 
             EllipseTool EllipseToolStrip = new EllipseTool();
             EllipseToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            EllipseToolStrip.SubscribeFill(IColorChooser);
+            EllipseToolStrip.SubscribeLine(OColorChooser);
             ToolBox.AddTool(EllipseToolStrip);
 
             RectangleTool RectangleToolStrip = new RectangleTool();
             RectangleToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            RectangleToolStrip.SubscribeFill(IColorChooser);
+            RectangleToolStrip.SubscribeLine(OColorChooser);
             ToolBox.AddTool(RectangleToolStrip);
             ToolBox.AddSeparator();
 
@@ -72,10 +77,12 @@ namespace EasyPaint
 
             LineFillTool LineFillToolStrip = new LineFillTool();
             LineFillToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            LineFillToolStrip.SubscribeLine(OColorChooser);
             ToolBox.AddTool(LineFillToolStrip);
 
             FillTool FillToolStrip = new FillTool();
             FillToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            FillToolStrip.SubscribeFill(IColorChooser);
             ToolBox.AddTool(FillToolStrip);
 
             this.Controls.Add(ToolBox);
@@ -100,6 +107,20 @@ namespace EasyPaint
             this.Controls.Add(this.tabControl);
             this.KeyDown += DrawingCanvas.CanvasKeyDown;
             this.KeyUp += DrawingCanvas.CanvasKeyUp;
+            //
+            // groupControl
+            //
+            GroupBox HistoryBox = new System.Windows.Forms.GroupBox()
+            {
+                Location = new System.Drawing.Point(625, 50)
+            };
+            HistoryBox.Name = "History";
+            HistoryBox.Size = new System.Drawing.Size(200, 400);
+            HistoryBox.TabIndex = 2;
+            HistoryBox.TabStop = false;
+            HistoryBox.Text = "History";
+
+            this.Controls.Add(HistoryBox);
         }
 
         public void Toolbar_ItemClicked(object Sender, ToolStripItemClickedEventArgs Event)
@@ -197,5 +218,6 @@ namespace EasyPaint
         {
             MessageBox.Show("File Exported");
         }
+
     }
 }

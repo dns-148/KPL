@@ -15,22 +15,22 @@ namespace EasyPaint.Commands
         private int Height;
 
 
-        public DrawRectangleCommand(Canvas InputCanvas, int XPoint, int YPoint, int Width, int Height)
+        public DrawRectangleCommand(Canvas InputCanvas, Color ILineColor, Color IFillColor, int XPoint, int YPoint, int Width, int Height)
         {
             this.ActiveCanvas = InputCanvas;
-            this.LineColor = ActiveCanvas.LineColor;
-            this.FillColor = ActiveCanvas.FillColor;
+            this.LineColor = ILineColor;
+            this.FillColor = IFillColor;
             this.Width = Width;
             this.Height = Height;
             this.X = XPoint;
             this.Y = YPoint;
+            RectangleShape = new Shapes.Rectangle(X, Y, Width, Height);
+            RectangleShape.SetOutlineColor(LineColor);
+            RectangleShape.SetFillColor(FillColor);
         }
 
         public void Execute()
         {
-            RectangleShape = new Shapes.Rectangle(X, Y, Width, Height);
-            RectangleShape.SetOutlineColor(LineColor);
-            RectangleShape.SetFillColor(FillColor);
             this.ActiveCanvas.AddDrawnShape(this.RectangleShape);
         }
 
