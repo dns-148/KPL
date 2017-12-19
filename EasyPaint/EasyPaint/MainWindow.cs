@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Drawing;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Tool;
 using EasyPaint.ToolBar;
@@ -54,14 +55,19 @@ namespace EasyPaint
 
             LineTool LineToolStrip = new LineTool();
             LineToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            LineToolStrip.SubscribeLine(OColorChooser);
             ToolBox.AddTool(LineToolStrip);
 
             EllipseTool EllipseToolStrip = new EllipseTool();
             EllipseToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            EllipseToolStrip.SubscribeFill(IColorChooser);
+            EllipseToolStrip.SubscribeLine(OColorChooser);
             ToolBox.AddTool(EllipseToolStrip);
 
             RectangleTool RectangleToolStrip = new RectangleTool();
             RectangleToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            RectangleToolStrip.SubscribeFill(IColorChooser);
+            RectangleToolStrip.SubscribeLine(OColorChooser);
             ToolBox.AddTool(RectangleToolStrip);
             ToolBox.AddSeparator();
 
@@ -72,10 +78,12 @@ namespace EasyPaint
 
             LineFillTool LineFillToolStrip = new LineFillTool();
             LineFillToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            LineFillToolStrip.SubscribeLine(OColorChooser);
             ToolBox.AddTool(LineFillToolStrip);
 
             FillTool FillToolStrip = new FillTool();
             FillToolStrip.Click += new EventHandler(Toolbox_ItemClicked);
+            FillToolStrip.SubscribeFill(IColorChooser);
             ToolBox.AddTool(FillToolStrip);
 
             this.Controls.Add(ToolBox);
@@ -85,6 +93,8 @@ namespace EasyPaint
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             DrawingCanvas = new Canvas();
+            DrawingCanvas.Name = "Untitled";
+            DrawingCanvas.Text = "Untitled";
 
             TabPage tabPage = new TabPage(DrawingCanvas.Name);
             // 
@@ -100,6 +110,20 @@ namespace EasyPaint
             this.Controls.Add(this.tabControl);
             this.KeyDown += DrawingCanvas.CanvasKeyDown;
             this.KeyUp += DrawingCanvas.CanvasKeyUp;
+            //
+            // groupControl
+            //
+            GroupBox HistoryBox = new System.Windows.Forms.GroupBox()
+            {
+                Location = new System.Drawing.Point(625, 50)
+            };
+            HistoryBox.Name = "History";
+            HistoryBox.Size = new System.Drawing.Size(200, 400);
+            HistoryBox.TabIndex = 2;
+            HistoryBox.TabStop = false;
+            HistoryBox.Text = "History";
+
+            this.Controls.Add(HistoryBox);
         }
 
         public void Toolbar_ItemClicked(object Sender, ToolStripItemClickedEventArgs Event)
@@ -162,13 +186,16 @@ namespace EasyPaint
                     myStream.Close();
                 }
             }
+            string FileName = Path.GetFileNameWithoutExtension(saveFileDialog1.FileName);
+            DrawingCanvas.Name = FileName;
+            DrawingCanvas.Text = FileName;
             MessageBox.Show("File Saved");
         }
+
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
             openFileDialog1.InitialDirectory = "c:\\";
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 2;
@@ -195,7 +222,25 @@ namespace EasyPaint
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("File Exported");
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Portable Network Graphic (*.png)|*.png";
+            saveFileDialog1.Title = "Export an Document";
+            saveFileDialog1.ShowDialog();
+            string filename = saveFileDialog1.FileName;
+            Bitmap AllImage = new Bitmap(845, 495);
+            System.Drawing.Rectangle Background = new System.Drawing.Rectangle(0, 0, 845, 495);
+            DrawToBitmap(AllImage, Background);
+
+            Bitmap NewImage = new Bitmap(600, 400);
+            using (Graphics UsedGraphic = Graphics.FromImage(NewImage))
+            {
+                UsedGraphic.DrawImage(AllImage, 0, 0, new System.Drawing.Rectangle(33, 101, 596, 377), GraphicsUnit.Pixel);
+            }
+
+            if (filename != "")
+            {
+                NewImage.Save(filename, System.Drawing.Imaging.ImageFormat.Png);
+            }
         }
     }
 }

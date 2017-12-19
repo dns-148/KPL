@@ -12,14 +12,14 @@ namespace EasyPaint.Commands
         private Color PastColor;
         private Color NextColor;
 
-        public ChangeFillColorCommand(Canvas InputCanvas, int X, int Y)
+        public ChangeFillColorCommand(Canvas InputCanvas, Color INextColor, int X, int Y)
         {
             ActiveCanvas = InputCanvas;
             XPoint = X;
             YPoint = Y;
             Shape SelectedShape = ActiveCanvas.GetShapeAt(X, Y);
             PastColor = SelectedShape.GetOutlineColor();
-            NextColor = ActiveCanvas.FillColor;
+            NextColor = INextColor;
         }
 
         public void Execute()

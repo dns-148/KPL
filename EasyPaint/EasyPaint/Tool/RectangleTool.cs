@@ -1,17 +1,51 @@
 ﻿using EasyPaint.Shapes;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Commands;
+using EasyPaint.Subject;
+using System;
 using System.Windows.Forms;
 
 namespace EasyPaint.Tool
 {
-    public class RectangleTool : ToolStripButton, ITool
+    public class RectangleTool : ToolStripButton, ITool, IObserver<FillColorSubject>, IObserver<LineColorSubject>
     {
         private Canvas ActiveCanvas;
         private ICommand Command;
         private Rectangle RectangleShape;
+        private FillColorSubject FillColor;
+        private LineColorSubject LineColor;
         private int XPoint;
         private int YPoint;
+
+        public void OnCompleted()
+        {
+            
+        }
+
+        public void OnError(Exception E)
+        {
+
+        }
+
+        public void OnNext(FillColorSubject NewInfo)
+        {
+            FillColor = NewInfo;
+        }
+
+        public void OnNext(LineColorSubject NewInfo)
+        {
+            LineColor = NewInfo;
+        }
+
+        public void SubscribeFill(IObservable<FillColorSubject> Provider)
+        {
+            Provider.Subscribe(this);
+        }
+
+        public void SubscribeLine(IObservable<LineColorSubject> Provider)
+        {
+            Provider.Subscribe(this);
+        }
 
         public Cursor Cursor
         {
@@ -49,7 +83,7 @@ namespace EasyPaint.Tool
                 XPoint = Event.X;
                 YPoint = Event.Y;
                 this.RectangleShape = new Rectangle(Event.X, Event.Y);
-                RectangleShape.SetFillColor(ActiveCanvas.FillColor);
+                RectangleShape.SetFillColor(FillColor.Info);
                 this.ActiveCanvas.AddDrawnShape(this.RectangleShape);
                 RectangleShape.Select();
             }
@@ -91,9 +125,10 @@ namespace EasyPaint.Tool
             {
                 if (Event.Button == MouseButtons.Left)
                 {
-                    Command = new DrawRectangleCommand(ActiveCanvas, XPoint, YPoint, this.RectangleShape.Width, this.RectangleShape.Height);
+                    Command = new DrawRectangleCommand(ActiveCanvas, LineColor.Info, FillColor.Info, XPoint, YPoint, this.RectangleShape.Width, this.RectangleShape.Height);
                     ActiveCanvas.RemoveDrawnShape(this.RectangleShape);
                     Command.Execute();
+                    ActiveCanvas.AddCommandtoStack(Command);
                 }
             }
         }

@@ -1,14 +1,37 @@
 ﻿using EasyPaint.Shapes;
+using EasyPaint.Subject;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Commands;
+using System;
 using System.Windows.Forms;
 
 namespace EasyPaint.Tool
 {
-    public class FillTool : ToolStripButton, ITool
+    public class FillTool : ToolStripButton, ITool, IObserver<FillColorSubject>
     {
         private Canvas ActiveCanvas;
+        private FillColorSubject FillColor;
         private ICommand Command;
+
+        public void OnCompleted()
+        {
+
+        }
+
+        public void OnError(Exception E)
+        {
+
+        }
+
+        public void OnNext(FillColorSubject NewInfo)
+        {
+            FillColor = NewInfo;
+        }
+
+        public void SubscribeFill(IObservable<FillColorSubject> Provider)
+        {
+            Provider.Subscribe(this);
+        }
 
         public Cursor Cursor
         {
@@ -57,8 +80,9 @@ namespace EasyPaint.Tool
                 Shape SelectedShape = ActiveCanvas.GetShapeAt(XPoint, YPoint);
                 if (SelectedShape != null)
                 {
-                    Command = new ChangeFillColorCommand(ActiveCanvas, XPoint, YPoint);
+                    Command = new ChangeFillColorCommand(ActiveCanvas, FillColor.Info, XPoint, YPoint);
                     Command.Execute();
+                    ActiveCanvas.AddCommandtoStack(Command);
                 }
             }
         }

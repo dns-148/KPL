@@ -1,14 +1,17 @@
 ﻿using EasyPaint.Shapes;
+using EasyPaint.Subject;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Commands;
 using System.Windows.Forms;
+using System;
 
 namespace EasyPaint.Tool
 {
-    public class LineTool : ToolStripButton, ITool
-    {
+    public class LineTool : ToolStripButton, ITool, IObserver<LineColorSubject>
+    { 
         private Canvas ActiveCanvas;
         private ICommand Command;
+        private LineColorSubject LineColor;
         private Line LineShape;
         private int XPoint;
         private int YPoint;
@@ -40,6 +43,26 @@ namespace EasyPaint.Tool
             this.ToolTipText = "Line tool";
             this.Image = Icon.line;
             this.CheckOnClick = true;
+        }
+
+        public void OnCompleted()
+        {
+
+        }
+
+        public void OnError(Exception E)
+        {
+
+        }
+
+        public void OnNext(LineColorSubject NewInfo)
+        {
+            LineColor = NewInfo;
+        }
+
+        public void SubscribeLine(IObservable<LineColorSubject> Provider)
+        {
+            Provider.Subscribe(this);
         }
 
         public void ToolMouseDown(object Sender, MouseEventArgs Event)
@@ -77,8 +100,9 @@ namespace EasyPaint.Tool
                 {
                     ActiveCanvas.RemoveDrawnShape(this.LineShape);
                     LineShape = null;
-                    Command = new DrawLineCommand(ActiveCanvas, XPoint, YPoint, Event.X, Event.Y);
+                    Command = new DrawLineCommand(ActiveCanvas, LineColor.Info, XPoint, YPoint, Event.X, Event.Y);
                     Command.Execute();
+                    ActiveCanvas.AddCommandtoStack(Command);
                 }
             }
         }

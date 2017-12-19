@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="InterfaceClass\ICommand.cs" />
     <Compile Include="InterfaceClass\IToolbarItem.cs" />
+    <Compile Include="Subject\FillColorSubject.cs" />
     <Compile Include="Shapes\CompositeShape.cs" />
     <Compile Include="Shapes\Ellipse.cs" />
     <Compile Include="Shapes\Line.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="BaseToolPlace.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Subject\LineColorSubject.cs" />
     <Compile Include="ToolBar\FillColorChooser.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -171,8 +173,6 @@
   <ItemGroup>
     <None Include="Image\outlineicon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Observer\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

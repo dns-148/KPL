@@ -128,6 +128,7 @@ namespace EasyPaint.Tool
         {
             if (Event.Button == MouseButtons.Left)
             {
+                Debug.WriteLine("{0} {1} {2} {3}", XPoint, YPoint, Event.X-XPoint, Event.Y - YPoint);
                 if (SelectionArea != null)
                 {
                     ActiveCanvas.DeselectAllShapes();
@@ -142,6 +143,7 @@ namespace EasyPaint.Tool
                 this.yAmount = Event.Y - YPoint;
                 Command = new MoveShapeCommand(SelectedShapes, XPoint, YPoint, xAmount, yAmount);
                 Command.Execute();
+                ActiveCanvas.AddCommandtoStack(Command);
             }
         }
 
@@ -168,6 +170,7 @@ namespace EasyPaint.Tool
                 {
                     Command = new GroupShapeCommand(ActiveCanvas, SelectedShapes);
                     Command.Execute();
+                    ActiveCanvas.AddCommandtoStack(Command);
                     SelectedShapes.Clear();
                 }
             }
