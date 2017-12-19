@@ -144,6 +144,7 @@ namespace EasyPaint.Tool
                 Command = new MoveShapeCommand(SelectedShapes, XPoint, YPoint, xAmount, yAmount);
                 Command.Execute();
                 ActiveCanvas.AddCommandtoStack(Command);
+                ActiveCanvas.SetCanvasMomento();
             }
         }
 
@@ -172,6 +173,7 @@ namespace EasyPaint.Tool
                     Command.Execute();
                     ActiveCanvas.AddCommandtoStack(Command);
                     SelectedShapes.Clear();
+                    ActiveCanvas.SetCanvasMomento();
                 }
             }
         }

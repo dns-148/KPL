@@ -4,12 +4,14 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using EasyPaint.InterfaceClass;
 using EasyPaint.Shapes;
+using EasyPaint.Subject;
 
 namespace EasyPaint
 {
     public class Canvas : Control
     {
         private ITool ActiveTool;
+        public ICaretaker Caretaker;
         private Stack<ICommand> UndoStack;
         private Stack<ICommand> RedoStack;
         private List<Shape> ShapesDrawn;
@@ -19,6 +21,11 @@ namespace EasyPaint
         public List<Shape> GetAllShape()
         {
             return ShapesDrawn;
+        }
+
+        public void setCaretaker(ICaretaker Input)
+        {
+            Caretaker = Input;
         }
 
         public Canvas()
@@ -72,6 +79,24 @@ namespace EasyPaint
                 this.CanvasRepaint();
             }
         }
+
+        public void SetCanvasMomento()
+        {
+            CanvasMomento momento =  new CanvasMomento(ShapesDrawn, UndoStack, RedoStack);
+            Caretaker.SetMomento(momento);
+        }
+
+        public void SetState(CanvasMomento Momento)
+        {
+            ShapesDrawn = new List<Shape>();
+            foreach (Shape iter in Momento.GetShapes())
+            {
+                ShapesDrawn.Add(iter);
+            }
+
+            UndoStack = new Stack<ICommand>(Momento.GetUndo());
+            RedoStack = new Stack<ICommand>(Momento.GetRedo());
+        }   
 
         public void CanvasKeyUp(object Sender, KeyEventArgs Event)
         {

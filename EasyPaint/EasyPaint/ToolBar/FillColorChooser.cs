@@ -29,7 +29,7 @@ namespace EasyPaint.ToolBar
         public FillColorChooser()
         {
             this.Name = "Fill Color Chooser";
-            this.ToolTipText = "Outline Color Chooser";
+            this.ToolTipText = "Fill Color Chooser";
             Observers = new List<IObserver<FillColorSubject>>();
             FillColor = new FillColorSubject()
             {

@@ -129,6 +129,7 @@ namespace EasyPaint.Tool
                     ActiveCanvas.RemoveDrawnShape(this.EllipseShape);
                     ActiveCanvas.AddCommandtoStack(Command);
                     Command.Execute();
+                    ActiveCanvas.SetCanvasMomento();
                 }
             }
         }

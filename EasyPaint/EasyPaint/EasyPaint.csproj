@@ -56,13 +56,18 @@
     <Compile Include="Commands\GroupShapeCommand.cs" />
     <Compile Include="Commands\MoveShapeCommand.cs" />
     <Compile Include="Commands\UndoRedoCommand.cs" />
+    <Compile Include="HistoryList.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Icon.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Icon.resx</DependentUpon>
     </Compile>
+    <Compile Include="InterfaceClass\ICaretaker.cs" />
     <Compile Include="InterfaceClass\ICommand.cs" />
     <Compile Include="InterfaceClass\IToolbarItem.cs" />
+    <Compile Include="Subject\CanvasMomento.cs" />
     <Compile Include="Subject\FillColorSubject.cs" />
     <Compile Include="Shapes\CompositeShape.cs" />
     <Compile Include="Shapes\Ellipse.cs" />
@@ -94,6 +99,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ToolBar\Toolbar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToolBar\UndoButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tool\FillTool.cs">

@@ -9,11 +9,13 @@ using EasyPaint.ToolBar;
 using System.IO;
 using System.Text;
 using EasyPaint.Shapes;
+using EasyPaint.Subject;
 
 namespace EasyPaint
 {
     public partial class MainWindow : Form
     {
+        private HistoryList History;
         private ITool ActiveTool;
         private Canvas DrawingCanvas;
         private Toolbox ToolBox;
@@ -37,6 +39,10 @@ namespace EasyPaint
             ToolBar.SetActiveCanvas(DrawingCanvas);
             ToolBar.AddSeparator();
             ToolBar.ItemClicked += new ToolStripItemClickedEventHandler(Toolbar_ItemClicked);
+
+            UndoButton ub = new UndoButton();
+            ToolBar.AddTool(ub);
+            ToolBar.AddSeparator();
 
             OutlineColorChooser OColorChooser = new OutlineColorChooser();
             ToolBar.AddTool(OColorChooser);
@@ -123,7 +129,34 @@ namespace EasyPaint
             HistoryBox.TabStop = false;
             HistoryBox.Text = "History";
 
+            // ListBox
+            History = new HistoryList();
+            History.TargetCanvas = DrawingCanvas;
+            History.MouseDown += History_OnSelected;
+            DrawingCanvas.Caretaker = (ICaretaker)History;
+            DrawingCanvas.SetCanvasMomento();
+
+            this.Controls.Add(History);
             this.Controls.Add(HistoryBox);
+        }
+
+        public void History_OnSelected(object Sender, EventArgs Event)
+        {
+
+            int index = History.Items.IndexOf(History.SelectedItem);
+            int SumofHistory = History.Items.Count;
+
+            for(int i = SumofHistory - 1; i > 0; i--)
+            {
+                CanvasMomento momento = History.rollBack();
+                if(i == index)
+                {
+                    DrawingCanvas.SetState(momento);
+                    DrawingCanvas.Refresh();
+                    History.SetMomento(momento);
+                    break;
+                }
+            }
         }
 
         public void Toolbar_ItemClicked(object Sender, ToolStripItemClickedEventArgs Event)

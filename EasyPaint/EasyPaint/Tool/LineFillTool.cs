@@ -83,6 +83,7 @@ namespace EasyPaint.Tool
                     Command = new ChangeOutlineColorCommand(ActiveCanvas, LineColor.Info, XPoint, YPoint);
                     Command.Execute();
                     ActiveCanvas.AddCommandtoStack(Command);
+                    ActiveCanvas.SetCanvasMomento();
                 }
             }
         }

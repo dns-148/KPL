@@ -103,6 +103,7 @@ namespace EasyPaint.Tool
                     Command = new DrawLineCommand(ActiveCanvas, LineColor.Info, XPoint, YPoint, Event.X, Event.Y);
                     Command.Execute();
                     ActiveCanvas.AddCommandtoStack(Command);
+                    ActiveCanvas.SetCanvasMomento();
                 }
             }
         }

@@ -83,6 +83,7 @@ namespace EasyPaint.Tool
                     Command = new ChangeFillColorCommand(ActiveCanvas, FillColor.Info, XPoint, YPoint);
                     Command.Execute();
                     ActiveCanvas.AddCommandtoStack(Command);
+                    ActiveCanvas.SetCanvasMomento();
                 }
             }
         }
